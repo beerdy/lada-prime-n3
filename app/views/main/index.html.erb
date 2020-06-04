@@ -77,8 +77,8 @@
                         <a href="https://prime.lada.ru<%= complectation['url'] %>" target="_blank" class="iteam"><%= complectation['name'] %></a>
                         <% end %>
                         <div class="sashka"></div>
-                        <a href="https://prime.lada.ru/ds/test-drive/"  class="buttonC">Пройти тест-драйв</a>
-                        <a href="#" onclick="return false;" class="buttonC">Купить в кредит</a>
+                        <a href="https://prime.lada.ru/ds/test-drive/" target="_blank"  class="buttonC">Пройти тест-драйв</a>
+                        <a href="https://prime.lada.ru/ds/form_credit.php" target="_blank"  class="buttonC">Купить в кредит</a>
                         <a href="#" onclick="return false;" class="buttonC popupOpen">Забронировать</a>
                       </div>
                     <% end %>
@@ -115,7 +115,7 @@
                   </div>
               </div>
               <a onclick="return false;" class="buttonA popupOpen">Получить предложение</a>
-              <a href="<%= product.try(:link) %>" class="buttonB">Подробнее о модели</a>
+              <a href="<%= product.try(:link) %>" target="_blank"  class="buttonB">Подробнее о модели</a>
           </div>
       </div>
     </div>
