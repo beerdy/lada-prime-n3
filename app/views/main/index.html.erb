@@ -103,7 +103,7 @@
         <div class="right">
             <h3><%= product.title %></h3>
             <p><%= product.description %></p>
-            <div class="price">от <span><%= product.link %></span> <i class="fa fa-rub"></i></div>
+            <div class="price">от <span><%= product.price %></span> <i class="fa fa-rub"></i></div>
             <div class="superBlock">
                 <div class="vigoda">Выгода до <span><%= product.bonus %></span> <i class="fa fa-rub"></i></div>
                 <div class="ost">осталось</div>
@@ -115,7 +115,7 @@
                   </div>
               </div>
               <a onclick="return false;" class="buttonA popupOpen">Получить предложение</a>
-              <a href="<%= product.try(:url) %>" class="buttonB">Подробнее о модели</a>
+              <a href="<%= product.try(:link) %>" class="buttonB">Подробнее о модели</a>
           </div>
       </div>
     </div>
