@@ -26,6 +26,7 @@ ru:
       product: 'Продукция'
       user: 'Пользователи'
       project: 'Проекты'
+      model: 'Модели'
     attributes:
       shared: &shared
         title: 'Наименование'
@@ -45,6 +46,8 @@ ru:
       content:
         <<: *shared
         articles: 'Прикрепить'
+      model:
+        <<: *shared
       project:
         <<: *shared
       slider:
