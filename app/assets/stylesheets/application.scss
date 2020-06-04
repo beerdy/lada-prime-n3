@@ -1392,21 +1392,22 @@ footer{
  	display: inline-block;
  	width: 30px;
  	height: 30px;
- 	background:#E3B873 ('vk.svg') no-repeat center;
+ 	background-color: #E3B873;
+ 	background: image-url('vk.svg') no-repeat center;
  	background-size: 30px 30px;
  }
  .socials .insta{
  	display: inline-block;
  	width: 30px;
  	height: 30px;
- 	background:image-url('insta.svg') no-repeat center;
+ 	background: image-url('insta.svg') no-repeat center;
  	background-size: 23px 23px;
  }
  .socials .youtube{
  	display: inline-block;
  	width: 30px;
  	height: 30px;
- 	background:image-url('youtube.svg') no-repeat center;
+ 	background: image-url('youtube.svg') no-repeat center;
  	background-size: 30px 30px;
  }
 

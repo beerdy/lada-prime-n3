@@ -26,4 +26,4 @@ document.addEventListener("turbolinks:load", function(){
       console.log('error form2 sending');
     });
   });
-    });
+});
