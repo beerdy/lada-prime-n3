@@ -1,0 +1,52 @@
+<%= form_with(model: slider, local: true) do |form| %>
+  <% if slider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(slider.errors.count, "error") %> prohibited this slider from being saved:</h2>
+
+      <ul>
+      <% slider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :slider_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :slider_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slave %>
+    <%= form.text_area :slave, id: :slider_slave %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link, id: :slider_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :slider_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sort %>
+    <%= form.number_field :sort, id: :slider_sort %>
+  </div>
+
+  <div class="field">
+    <%= form.label :show %>
+    <%= form.check_box :show, id: :slider_show %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

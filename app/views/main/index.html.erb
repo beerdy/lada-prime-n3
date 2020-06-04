@@ -1,0 +1,180 @@
+<% sliders = Slider.all %>
+<script type="text/javascript">
+  window.slideCount = <%= sliders.count %>;
+
+</script>
+<header class="header animated fadeInDown">
+  <div class="contentpage_box">
+    <a href="/" class="logoBlock"></a>
+    <div id="location" class="location">
+      <div class="city">г. Липецк</div>
+      <span><%= @place.html_safe %></span>
+    </div>
+    <div class="phone">
+      <%= @phone.html_safe %>
+      <span>горячая линия</span>
+    </div>
+  </div>
+   <a class="menuiBlock" href="/contacts" onclick="return bigMenu(this);"><span></span></a>
+</header>
+
+<section id="home" class="contentpage animated fadeIn">
+  <div class="menuBox">
+    <nav class="menu">
+      <% @models.each do |model| %>
+      <a href="https://prime.lada.ru<%= model.link %>" target="_blank" class="iteam"><%= model.model %></a>
+      <% end %>
+    </nav>
+  </div>
+  <div class="slider">
+    <ul class="sliderwrapper">
+      <% sliders.each do |slide| %>
+      <li class="slide" style="background-image: url('<%= slide.gallery.url %>');">
+        <% if slide.slave %>
+        <div class="VideoYoutube"><iframe width="100%" height="100%" src="<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
+        <% end %>
+        <div class="slideContent">
+          <div class="textBox">
+            <div class="word1"><%= slide.word1.html_safe %></div>
+            <div class="word2"><%= slide.word2.html_safe %></div>
+            <p><%= slide.description.html_safe %></p>
+            <div class="socials">
+              <a href="/" class="vk"></a>
+              <a href="/" class="insta"></a>
+              <a href="/" class="youtube"></a>
+              <a href="/" class="fb"></a>
+              <a href="/" class="ok"></a>
+            </div>
+            <a href="<%= slide.url %>" class="buttonA"><%= slide.link %></a>
+            <a href="/" class="buttonB whatsapp">Написать в WhatsApp</a>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <div class="prev-btn"></div>
+    <div class="next-btn"></div>
+  </div>
+</section>
+
+<section id="price" class="contentpage">
+  <div class="contentpage_box">
+        <h2>ВЫБИРАЙ СВОЮ LADA</h2>
+        <div class="tabs">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1" title="Вкладка 1">В наличии</label>
+         
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2" title="Вкладка 2">На заказ</label>
+         
+            <span id="content-tab1">
+                <div class="cars">
+                    <% @models.each do |model| %>
+                      <div class="car" style="background-image: url(<%= model.image.url %>)">
+                        <a href="https://prime.lada.ru<%= model.link %>" target="_blank"><h3><%= model.model %></h3></a>
+                        <div class="price"><span>от</span> 342 000</div>
+                        <% JSON.parse(model.complectations).each do |complectation| %>
+                        <a href="https://prime.lada.ru<%= complectation['url'] %>" target="_blank" class="iteam"><%= complectation['name'] %></a>
+                        <% end %>
+                        <div class="sashka"></div>
+                        <a href="#" onclick="return false;" class="buttonC">Пройти тест-драйв</a>
+                        <a href="#" onclick="return false;" class="buttonC">Купить в кредит</a>
+                        <a href="#" onclick="return false;" class="buttonC popupOpen">Забронировать</a>
+                      </div>
+                    <% end %>
+                  </div>
+            </span>  
+            <span id="content-tab2">
+                Раздел в разработке
+            </span> 
+                            <div class="tradein">
+                  <h4>АВТО с ПРОБЕГОМ <span>TRADE-IN</span></h4>
+                    <a href="/" class="buttonA">Выбрать автомобиль</a>
+                    <a href="/" class="buttonB">Получить консультацию</a>
+                </div>
+        </div>
+  </div>
+</section>
+
+<section id="super" class="contentpage">
+    <% @products.each_with_index do |product,i| %>
+    <div class="superPuper slide<%=i+1%>" style="background-image:linear-gradient(270deg, rgba(76, 97, 107, 0.8) 0.01%, rgba(76, 97, 107, 0) 97.71%), url(<%= product.gallery.url %>);" time="<%= product.finish %> 20:00:00 GMT+03:00">
+      <div class="contentpage_box">
+        <div class="right">
+            <h3><%= product.title %></h3>
+            <p><%= product.description %></p>
+            <div class="price">от <span><%= product.link %></span> <i class="fa fa-rub"></i></div>
+            <div class="superBlock">
+                <div class="vigoda">Выгода до <span><%= product.bonus %></span> <i class="fa fa-rub"></i></div>
+                <div class="ost">осталось</div>
+                  <div class="countdown">
+                      <div class="days">Дней <span></span></div>
+                      <div class="hours">Часов <span></span></div>
+                      <div class="minutes">Минут <span></span></div>
+                      <div class="seconds">Сукунд <span></span></div>
+                  </div>
+              </div>
+              <a href="/" class="buttonA">Получить предложение</a>
+              <a href="/" class="buttonB">Подробнее о модели</a>
+          </div>
+      </div>
+    </div>
+    <% end %>
+</section>
+
+<section id="about" class="contentpage">
+  <div class="contentpage_box">
+      <div class="leftBox">
+        <h2>Автосалон PRIME</h2>
+        <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. LADA – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
+        <br><br>
+        <a href="/" class="usluga u01">Юридическим лицам</a>
+        <a href="/" class="usluga u02">Страхование</a>
+        <a href="/" class="usluga u03">Зона кафе</a>
+        <a href="/" class="usluga u04">Камеры салона</a>
+        <a href="/" class="usluga u05">Зона отдыха</a>
+        <a href="/" class="usluga u06">Кредитование</a>
+      </div>
+      <div class="rightBox"></div>
+  </div>
+</section>
+
+<section id="contacts" class="contentpage">
+  <div class="contentpage_box">
+      <h2>Контакты</h2>
+      <div style="overflow:hidden;margin:0 0 20px 0;">
+        <div class="phone"><%= @phone.html_safe %></div>
+        <div class="mail"><%= @email.html_safe %></div>
+        <div class="place"><%= @place.html_safe %></div>
+      </div>
+      <%= @map.html_safe %>
+  </div>
+</section>
+
+<footer>
+  <div class="txtt">
+    Все права защищены © 2006–2020, PRIME, официальный дилер LADA
+  </div>
+  <a href="/pages/vakansi">Вакансии</a>
+  <a href="">Политика</a>
+  <a href="">Обратная связь</a>
+</footer>
+
+<div class="bigMenu">
+  <a class="bigMenu_list order" href="#order" onclick="pageTo('order');">Заказать</a>
+    <a class="bigMenu_list" href="#service" onclick="pageTo('service');">Услуги</a>
+    <a class="bigMenu_list" href="#projects" onclick="pageTo('projects');">Работы</a>
+    <a class="bigMenu_list" href="#contacts" onclick="pageTo('contacts');">Контакты</a>
+</div>
+
+<div class="popupBg" onclick="return popupOff();">
+  <div class="popup">
+    <div class="popupClose"></div>
+    <h2>Обратная связь</h2>
+    <p>Задайте свой вопрос или просто оставьте номер телефона и с Вами обязательно свяжутся!</p>
+    <input placeholder="Ваше Имя" />
+    <input placeholder="+7 (___) ___ - __ - __" />
+    <input placeholder="Вопрос" />
+    <a href="" class="buttonA">Отправить</a>
+  </div>
+</div>

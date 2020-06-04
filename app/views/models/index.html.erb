@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Description</th>
+      <th>Complectations</th>
+      <th>Slave</th>
+      <th>Link</th>
+      <th>Url</th>
+      <th>Sort</th>
+      <th>Show</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+      <tr>
+        <td><%= model.model %></td>
+        <td><%= model.description %></td>
+        <td><%= model.complectations %></td>
+        <td><%= model.slave %></td>
+        <td><%= model.link %></td>
+        <td><%= model.url %></td>
+        <td><%= model.sort %></td>
+        <td><%= model.show %></td>
+        <td><%= link_to 'Show', model %></td>
+        <td><%= link_to 'Edit', edit_model_path(model) %></td>
+        <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Model', new_model_path %>

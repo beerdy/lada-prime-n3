@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @slider.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @slider.description %>
+</p>
+
+<p>
+  <strong>Slave:</strong>
+  <%= @slider.slave %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @slider.link %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @slider.url %>
+</p>
+
+<p>
+  <strong>Sort:</strong>
+  <%= @slider.sort %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @slider.show %>
+</p>
+
+<%= link_to 'Edit', edit_slider_path(@slider) %> |
+<%= link_to 'Back', sliders_path %>

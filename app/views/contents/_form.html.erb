@@ -1,0 +1,52 @@
+<%= form_with(model: content, local: true) do |form| %>
+  <% if content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
+
+      <ul>
+      <% content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :content_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :content_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slave %>
+    <%= form.text_area :slave, id: :content_slave %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link, id: :content_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :content_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sort %>
+    <%= form.number_field :sort, id: :content_sort %>
+  </div>
+
+  <div class="field">
+    <%= form.label :show %>
+    <%= form.check_box :show, id: :content_show %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
