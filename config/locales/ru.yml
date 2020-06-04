@@ -85,7 +85,7 @@ ru:
         work: 'Медиатека'
       product:
         <<: *shared
-        link: 'Цена'
+        price: 'Цена'
 
   date:
     abbr_day_names:
