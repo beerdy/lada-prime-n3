@@ -47,4 +47,4 @@
     <a class="bigMenu_list" href="#projects" onclick="pageTo('projects');">Работы</a>
     <a class="bigMenu_list" href="#contacts" onclick="pageTo('contacts');">Контакты</a>
 </div>
-<%= @page.slave.html_safe %>
+<%= @page.slave.html_safe if @page.slave %>

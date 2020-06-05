@@ -10,6 +10,14 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    if @page.meta != '' and @page.meta != nil
+      @description_and_title = @page.meta
+    else
+      doc = Nokogiri::HTML::fragment @description_and_title
+      title = doc.at_css('title').text
+      doc.at_css('title').content = @page.title + " | " + title
+      @description_and_title = doc.to_html
+    end
   end
 
   # GET /pages/new

@@ -4,8 +4,11 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= @head_body.html_safe %>
+
+    <%= @description_and_title.html_safe  %>
+
+    <%= @keywords_and_other.html_safe  %>
+
   </head>
   <body>
     <%= yield %>
