@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
-  resources :pages
-  resources :models
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'main#index'
+  match "/404" => "errors#error404", via: [:get, :post]
+  
+  mount Ckeditor::Engine => '/ckeditor'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
-
-  # resources :projects
+  
   resources :messages
+  
+  # resources :projects
+  # resources :pages
+  # resources :models
   # resources :galleries
   # resources :contents
   # resources :products

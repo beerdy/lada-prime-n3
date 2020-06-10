@@ -1,7 +1,6 @@
 <% sliders = Slider.all %>
 <script type="text/javascript">
   window.slideCount = <%= sliders.count %>;
-
 </script>
 <header class="header animated fadeInDown">
   <div class="contentpage_box">
@@ -72,7 +71,7 @@
                     <% @models.each do |model| %>
                       <div class="car" style="background-image: url(<%= model.image.url %>)">
                         <a href="https://prime.lada.ru<%= model.link %>" target="_blank"><h3><%= model.model %></h3></a>
-                        <div class="price"><span>от</span> 342 000</div>
+                        <div class="price"><span>от</span> <%= model.product.price %> <i class="fa fa-rub"></i></div>
                         <% JSON.parse(model.complectations).each do |complectation| %>
                         <a href="https://prime.lada.ru<%= complectation['url'] %>" target="_blank" class="iteam"><%= complectation['name'] %></a>
                         <% end %>
@@ -87,10 +86,10 @@
             <span id="content-tab2">
                 Раздел в разработке
             </span> 
-                            <div class="tradein">
+                <div class="tradein">
                   <h4>АВТО с ПРОБЕГОМ <span>TRADE-IN</span></h4>
-                    <a href="/" class="buttonA">Выбрать автомобиль</a>
-                    <a href="/" class="buttonB">Получить консультацию</a>
+                    <a href="https://www.avito.ru/lipetskprime" target="_blank" class="buttonA">Выбрать автомобиль</a>
+                    <a href="https://prime.lada.ru/ds/cars/evaluation/" target="_blank" class="buttonB">Оценить автомобиль</a>
                 </div>
         </div>
   </div>

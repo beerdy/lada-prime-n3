@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_092307) do
+ActiveRecord::Schema.define(version: 2020_06_10_113311) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_092307) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.string "price"
+    t.integer "product_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_092307) do
     t.string "bonus"
     t.date "finish"
     t.string "price"
+    t.integer "model_id"
   end
 
   create_table "projects", force: :cascade do |t|
