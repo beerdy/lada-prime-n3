@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function(){
     var slideNow = 1;
-    var slideInterval = 115000;
+    var slideInterval = 5000;
     var navBtnId = 0;
     var translateWidth = 0;
 

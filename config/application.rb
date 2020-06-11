@@ -18,7 +18,7 @@ module LadaPrime
     # -- all .rb files in that directory are automatically loaded.
 
     # For 404 page
-    require Rails.root.join("app/lib/custom_public_exceptions")    
+    require Rails.root.join("lib/custom_public_exceptions")    
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
   end
 end
