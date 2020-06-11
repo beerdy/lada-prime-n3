@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :messages
-  
+  resources :pages, only: [:show]
   # resources :projects
-  # resources :pages
   # resources :models
   # resources :galleries
   # resources :contents
