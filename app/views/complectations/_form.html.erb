@@ -1,0 +1,122 @@
+<%= form_with(model: complectation, local: true) do |form| %>
+  <% if complectation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complectation.errors.count, "error") %> prohibited this complectation from being saved:</h2>
+
+      <ul>
+      <% complectation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :engine %>
+    <%= form.text_field :engine %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clapan %>
+    <%= form.number_field :clapan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :power %>
+    <%= form.number_field :power %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transmission %>
+    <%= form.text_field :transmission %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owners %>
+    <%= form.number_field :owners %>
+  </div>
+
+  <div class="field">
+    <%= form.label :millage %>
+    <%= form.number_field :millage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :case %>
+    <%= form.text_field :case %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drive %>
+    <%= form.text_field :drive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :condition %>
+    <%= form.text_field :condition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_new %>
+    <%= form.text_field :price_new %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_old %>
+    <%= form.text_field :price_old %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sort %>
+    <%= form.number_field :sort %>
+  </div>
+
+  <div class="field">
+    <%= form.label :show %>
+    <%= form.check_box :show %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

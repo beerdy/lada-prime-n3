@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_113311) do
+ActiveRecord::Schema.define(version: 2020_06_24_134110) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -21,6 +21,35 @@ ActiveRecord::Schema.define(version: 2020_06_10_113311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "complectations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "engine"
+    t.integer "clapan"
+    t.integer "power"
+    t.string "transmission"
+    t.string "order"
+    t.string "colors"
+    t.integer "owners"
+    t.integer "millage"
+    t.string "casecar"
+    t.string "drive"
+    t.integer "year"
+    t.string "condition"
+    t.string "price_new"
+    t.string "price_old"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "complectation_id"
+    t.integer "model_id"
+    t.string "casecar_url"
+    t.index ["model_id"], name: "index_complectations_on_model_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -82,6 +111,19 @@ ActiveRecord::Schema.define(version: 2020_06_10_113311) do
     t.datetime "image_updated_at"
     t.string "price"
     t.integer "product_id"
+    t.integer "complectation_id"
+    t.index ["complectation_id"], name: "index_models_on_complectation_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "property"
+    t.text "name"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.integer "complectation_id"
+    t.index ["complectation_id"], name: "index_options_on_complectation_id"
   end
 
   create_table "pages", force: :cascade do |t|

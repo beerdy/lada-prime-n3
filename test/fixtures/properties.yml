@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  secure: MyText
+  interier: MyText
+  comfort: MyText
+  extarier: MyText
+  link: MyString
+  url: MyString
+  sort: 1
+  show: false
+
+two:
+  secure: MyText
+  interier: MyText
+  comfort: MyText
+  extarier: MyText
+  link: MyString
+  url: MyString
+  sort: 1
+  show: false

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :properties
+  resources :complectations
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
@@ -10,6 +12,9 @@ Rails.application.routes.draw do
   
   resources :messages
   resources :pages, only: [:show]
+  
+  resources :cars, only: [:show, :index]
+
   # resources :projects
   # resources :models
   # resources :galleries

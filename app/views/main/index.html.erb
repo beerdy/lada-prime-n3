@@ -1,22 +1,3 @@
-<% sliders = Slider.all %>
-<script type="text/javascript">
-  window.slideCount = <%= sliders.count %>;
-</script>
-<header class="header animated fadeInDown">
-  <div class="contentpage_box">
-    <a href="/" class="logoBlock"></a>
-    <div id="location" class="location">
-      <div class="city">г. Липецк</div>
-      <span><%= @place.html_safe %></span>
-    </div>
-    <div class="phone">
-      <%= @phone.html_safe %>
-      <span>горячая линия</span>
-    </div>
-  </div>
-   <a class="menuiBlock" href="/contacts" onclick="return bigMenu(this);"><span></span></a>
-</header>
-
 <section id="home" class="contentpage animated fadeIn">
   <div class="menuBox">
     <nav class="menu">
@@ -27,7 +8,7 @@
   </div>
   <div class="slider">
     <ul class="sliderwrapper">
-      <% sliders.each do |slide| %>
+      <% @sliders.each do |slide| %>
       <li class="slide" style="background-image: url('<%= slide.gallery.url %>');">
         <% if slide.slave %>
         <div class="VideoYoutube"><iframe width="100%" height="100%" src="<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
@@ -48,7 +29,7 @@
             <div class="buttonB"><span>НАПИСАТЬ НАМ В</span>
             <a href="https://wa.me/79161457988?text=Добрый день!" class="whatsapp"  target="_blank" ></a>
             <a href="viber://add?number=79161457988" class="viber"  target="_blank" ></a>
-            <a href='tg://resolve?domain="DCPRIME"' class="telegram"  target="_blank" ></a>
+            <a href='tg://resolve?domain="PRIMEDC"' class="telegram"  target="_blank" ></a>
           </div>
         </div>
       </li>
@@ -74,7 +55,7 @@
                     <% @models.each do |model| %>
                       <div class="car" style="background-image: url(<%= model.image.url %>)">
                         <a href="https://prime.lada.ru<%= model.link %>" target="_blank"><h3><%= model.model %></h3></a>
-                        <div class="price"><span>от</span> <%= model.product.price %> <i class="fa fa-rub"></i></div>
+                        <div class="price"><span>от</span> <%= model.product.price %> <i class="fa fa-rub" style="font-size: 13pt;"></i></div>
                         <% JSON.parse(model.complectations).each do |complectation| %>
                         <a href="https://prime.lada.ru<%= complectation['url'] %>" target="_blank" class="iteam"><%= complectation['name'] %></a>
                         <% end %>
@@ -140,43 +121,3 @@
       <div class="rightBox"></div>
   </div>
 </section>
-
-<section id="contacts" class="contentpage">
-  <div class="contentpage_box">
-      <h2>Контакты</h2>
-      <div style="overflow:hidden;margin:0 0 20px 0;">
-        <div class="phone"><%= @phone.html_safe %></div>
-        <div class="mail"><%= @email.html_safe %></div>
-        <div class="place"><%= @place.html_safe %></div>
-      </div>
-      <%= @map.html_safe %>
-  </div>
-</section>
-
-<footer>
-  <div class="txtt">
-    Все права защищены © 2006–2020, ПРАЙМ, официальный дилер LADA
-  </div>
-  <a href="/pages/vakansi">Вакансии</a>
-  <a href="/pages/politics">Политика</a>
-  <a href="#" onclick="return false;" class="popupOpen">Обратная связь</a>
-</footer>
-
-<div class="bigMenu">
-  <a class="bigMenu_list order" href="#order" onclick="pageTo('order');">Заказать</a>
-    <a class="bigMenu_list" href="#service" onclick="pageTo('service');">Услуги</a>
-    <a class="bigMenu_list" href="#projects" onclick="pageTo('projects');">Работы</a>
-    <a class="bigMenu_list" href="#contacts" onclick="pageTo('contacts');">Контакты</a>
-</div>
-
-<div class="popupBg" onclick="return popupOff();">
-  <div class="popup">
-    <div class="popupClose"></div>
-    <h2>Обратная связь</h2>
-    <p>Задайте свой вопрос или просто оставьте номер телефона и с Вами обязательно свяжутся!</p>
-    <input placeholder="Ваше Имя" />
-    <input placeholder="+7 (___) ___ - __ - __" />
-    <input placeholder="Вопрос" />
-    <a href="" class="buttonA">Отправить</a>
-  </div>
-</div>

@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  engine: MyString
+  clapan: 1
+  power: 1
+  transmission: MyString
+  type: 
+  color: MyString
+  type: 
+  owners: 1
+  millage: 1
+  case: MyString
+  drive: MyString
+  year: 1
+  condition: MyString
+  price_new: MyString
+  price_old: MyString
+  link: MyString
+  url: MyString
+  sort: 1
+  show: false
+
+two:
+  title: MyString
+  description: MyText
+  engine: MyString
+  clapan: 1
+  power: 1
+  transmission: MyString
+  type: 
+  color: MyString
+  type: 
+  owners: 1
+  millage: 1
+  case: MyString
+  drive: MyString
+  year: 1
+  condition: MyString
+  price_new: MyString
+  price_old: MyString
+  link: MyString
+  url: MyString
+  sort: 1
+  show: false

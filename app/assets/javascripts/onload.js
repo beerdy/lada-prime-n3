@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function(){
+// document.addEventListener("turbolinks:load", function(){
   window.addEventListener("load", function() {
     const form1 = document.querySelector("#form1");
     form1.addEventListener("ajax:success", function(event) {
@@ -26,4 +26,4 @@ document.addEventListener("turbolinks:load", function(){
       console.log('error form2 sending');
     });
   });
-});
+// });

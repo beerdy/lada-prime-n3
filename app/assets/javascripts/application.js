@@ -14,10 +14,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 // require rails-ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
-
-document.addEventListener("turbolinks:load", function(){
+// document.addEventListener("turbolinks:load", function(){
 
   function pageTo(page){
     var p = $("#"+page);
@@ -116,4 +115,4 @@ $(document).ready(function() {
   });
 
 
-});
+// });

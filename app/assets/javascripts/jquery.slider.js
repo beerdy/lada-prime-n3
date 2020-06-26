@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function(){
+// document.addEventListener("turbolinks:load", function(){
     var slideNow = 1;
     var slideInterval = 5000;
     var navBtnId = 0;
@@ -60,4 +60,4 @@ document.addEventListener("turbolinks:load", function(){
             slideNow--;
         }
     }
-});
+// });

@@ -20,13 +20,9 @@ module ParserOfficialSite
     
     def parse
       @id           = @doc.css('.kompl_compare')[0]['base_id'].to_i
-
-      @name         = @doc.css('#zag').text.gsub!('КОНФИГУРАТОР', '')
-      
+      @name         = @doc.css('#zag').text.gsub!('КОНФИГУРАТОР', '').scan(/([a-zA-Zа-яА-Я0-9.]+)/).join(' ')
       @devise       = @doc.css('#zagtxt').inner_html
-      
       @colors_block = @doc.css('.color_list')[0].inner_html
-      
       @pdf_price    = @doc.css('.all_compl')[0]["href"]
 
       @doc.css('.kompl').each do |item|
@@ -56,14 +52,15 @@ module ParserOfficialSite
       end
 
       def item_params item
-        prices = get_prices item
-
+        prices   = get_prices item
+        kompl_id = item.attributes["id"]
         @table.push({
-          :kompl_id   => item.attributes["id"],
+          :kompl_id   => kompl_id.value,
           :kompl_name => item.css('.kompl_name').text,
           :colors_htm => get_colors( item.css('.has_dealer') ),
           :price_new  => prices[0].text,
-          :price_old  => prices[1].try(:text)
+          :price_old  => prices[1].try(:text),
+          :property   => get_property( kompl_id )
         })
       end
 
@@ -90,6 +87,29 @@ module ParserOfficialSite
         end
 
         return colors
+      end
+
+      def get_property kompl_id
+        property = []
+        @doc.css("##{kompl_id}_kompl_box").css(".kompl_config_uzel").each do |item|
+          property.push({ 
+            id:      item.attributes["uzel_id"].value,
+            name:    item.text,
+            options: get_options( kompl_id, item.attributes["uzel_id"] )
+          })
+        end
+        property
+      end
+
+      def get_options kompl_id, uzel_id
+        options = []
+        @doc.css("##{kompl_id}_#{uzel_id}").each do |item|
+          item.children.children.each do |i|
+            option = i.text[2..i.text.length]
+            options.push option if option
+          end
+        end
+        options
       end
   
   end

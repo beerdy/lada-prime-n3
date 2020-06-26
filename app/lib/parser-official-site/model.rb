@@ -59,10 +59,10 @@ module ParserOfficialSite
         content = nil
 
         if content
-          puts "CONTENT FROM BD"
+          # puts "CONTENT FROM BD"
 
         else
-          puts "!!!CONTENT FROM SITE!!!"
+          # puts "!!!CONTENT FROM SITE!!!"
 
           # Open url parsed site and read HTML
           content = open( url ) do |http|

@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
     
     @keywords_and_other    = @head.slave
     @description_and_title = @head.description
+
+    @sliders  = Slider.all
   end
 
   private

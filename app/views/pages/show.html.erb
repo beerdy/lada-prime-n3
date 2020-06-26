@@ -1,17 +1,3 @@
-<header class="header animated fadeInDown">
-  <div class="contentpage_box">
-    <a href="/" class="logoBlock"></a>
-    <div id="location" class="location">
-      <div class="city">г. Липецк</div>
-      <span>ваш город</span>
-    </div>
-    <div class="phone">
-      (4742) 500-777
-      <span>горячая линия</span>
-    </div>
-  </div>
-   <a class="menuiBlock" href="/contacts" onclick="return bigMenu(this);"><span></span></a>
-</header>
 <section id="page" class="contentpage">
   <div class="contentpage_box">
     <h2><%= @page.title %></h2>
@@ -20,31 +6,3 @@
     </article>
   </div>
 </section>
-<section id="contacts" class="contentpage">
-  <div class="contentpage_box">
-      <h2>Контакты</h2>
-      <div style="overflow:hidden;margin:0 0 20px 0;">
-        <div class="phone"><%= @phone.html_safe %></div>
-        <div class="mail"><%= @email.html_safe %></div>
-        <div class="place"><%= @place.html_safe %></div>
-      </div>
-      <%= @map.html_safe %>
-  </div>
-</section>
-
-<footer>
-  <div class="txtt">
-    Все права защищены © 2006–2020, PRIME, официальный дилер LADA
-  </div>
-  <a href="">Вакансии</a>
-  <a href="">Политика</a>
-  <a href="">Обратная связь</a>
-</footer>
-
-<div class="bigMenu">
-  <a class="bigMenu_list order" href="#order" onclick="pageTo('order');">Заказать</a>
-    <a class="bigMenu_list" href="#service" onclick="pageTo('service');">Услуги</a>
-    <a class="bigMenu_list" href="#projects" onclick="pageTo('projects');">Работы</a>
-    <a class="bigMenu_list" href="#contacts" onclick="pageTo('contacts');">Контакты</a>
-</div>
-<%= @page.slave.html_safe if @page.slave %>

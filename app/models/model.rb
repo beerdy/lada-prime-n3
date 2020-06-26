@@ -4,7 +4,8 @@ class Model < ApplicationRecord
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif", "application/pdf"]
 
-  belongs_to :product
+  belongs_to :product, optional: true
+  belongs_to :complectation, optional: true
   
   # For parser
   def picture_from_link(link)
