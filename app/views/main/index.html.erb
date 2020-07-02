@@ -85,8 +85,10 @@
       <div class="contentpage_box">
         <div class="right">
             <h3><%= product.title %></h3>
-            <p><%= product.description %></p>
-            <div class="price">от <span><%= product.price %></span> <i class="fa fa-rub"></i></div>
+            <p><%= product.description%></p>
+            <div class="price">
+              <p>Купить <%= product.title %> в Липецке по цене от <span><%= product.price %></span> <i class="fa fa-rub"></i></p>
+            </div>
             <div class="superBlock">
                 <div class="vigoda">Выгода до <span><%= product.bonus %></span> <i class="fa fa-rub"></i></div>
                 <div class="ost">осталось</div>
