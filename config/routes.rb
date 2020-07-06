@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
-  
+  get  'main/index'
+  get  'maps', to: 'main#index'
+
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
