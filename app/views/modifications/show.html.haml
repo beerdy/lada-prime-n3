@@ -1,0 +1,38 @@
+= render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: @modification
+
+%section#cars.contentpage
+  .contentpage_box
+    .cars-box
+      - sort_complectations(@modification.complectations).each do |complectation|
+        %a.car-iteam{ :href => "/complectations/"+complectation.id.to_s, :complect => "#"+complectation.name }
+          .car-title
+            = @modification.name
+          .car-price
+            = number_to_currency(complectation.price_new, precision: 0, unit: "") 
+            ₽
+          .car-image
+            - if @modification.modification_images.first.try(:image)
+              = image_tag @modification.modification_images.first.try(:image).url(:medium), class: 'ml'
+            - else
+              = image_tag @model.image.url, class: 'sm'
+          .car-sale
+            Скидка до 
+            = number_to_currency(complectation.diff_price, precision: 0, unit: "") 
+            ₽
+          .car-modification
+            .mod-line
+              .mod-left В наличии:
+              .mod-right
+                - if complectation.complectation_colors.count > 0
+                  - complectation.complectation_colors.each do |color|
+                    .colors.js-colors{ :style => 'background-color: #'+color.color.rgb, "color-id" => color.color.id, "modification-id" => @modification.id }
+                - else
+                  УТОЧНИТЬ
+            .mod-line
+              .mod-left Комплектация:
+              .mod-right
+                = complectation.name
+            .mod-line
+              .mod-left Модификация:
+              .mod-right
+                = complectation.subname

@@ -1,0 +1,22 @@
+<%= form_with(model: complectation, local: true) do |form| %>
+  <% if complectation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complectation.errors.count, "error") %> prohibited this complectation from being saved:</h2>
+
+      <ul>
+      <% complectation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Введите ссылку модификации:</label>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

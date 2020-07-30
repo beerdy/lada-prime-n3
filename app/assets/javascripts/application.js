@@ -18,6 +18,19 @@
 //= require_tree .
 // document.addEventListener("turbolinks:load", function(){
 
+ 
+  function getURLVar(key) {
+    var query = String(document.location.href).split('?');
+    if (query[1]) {
+      var part = query[1].split('&');
+      for (i = 0; i < part.length; i++) {
+        var data = part[i].split('=');
+        if (data[0] == key && data[1]) return data[1];
+      }
+    }
+    return '';
+  }
+
   function pageTo(page){
     var p = $("#"+page);
     var offset = p.offset();
@@ -28,23 +41,6 @@
 
     return false;
   }
-
-  $(window).scroll(function(){
-    var p = $("#home");
-    var offset = p.offset();
-
-        if ($(this).scrollTop() > offset.top/1.5) {
-            $('.buttonUp').addClass('yes');
-        } else {
-            $('.buttonUp').removeClass('yes');
-        }
-
-        if ($(this).scrollTop() > 50) {
-            $('.header').addClass('small');
-        } else {
-            $('.header').removeClass('small');
-        }
-  });
 
   function bigMenu(it){
     console.log('OpenMenu');
@@ -70,9 +66,6 @@ $(document).ready(function() {
         $('.popupBg').fadeOut();
     });
 
-
-    console.log('Все работает. а саша дурак');
-
     $('div.superPuper').each(function (index, value) { 
        var deadline = $(this).attr('time');
        initializeClock(deadline, this); 
@@ -95,7 +88,6 @@ $(document).ready(function() {
   }
 
   function initializeClock(endtime, obj){
-    console.log('Все работает. а саша дурак');
     var clock = $('.countdown');
 
       function updateClock(obj){
@@ -112,7 +104,47 @@ $(document).ready(function() {
     updateClock(obj); // запустите функцию один раз, чтобы избежать задержки
     var timeinterval = setInterval(updateClock,1000, obj);
   }
+  if($('.kuzov').length){
+    var url_string = window.location.href.split('/');
+      if(url_string[4] && url_string[4]!=""){
+        console.log('Модель указана');
+        $('.model .new-select').text($('.new-select__item[data-value="/models/'+url_string[4]+'/"] span').text());
+      }else{
+        $('.kuzov').addClass('invisible');
+      }
+  } 
+
+  if($('.modification').length){
+    var url_string = window.location.href.split('/');
+      if(url_string[6] && url_string[6]!=""){
+        console.log('Модификация указана'); 
+        $('.kuzov .new-select').text($('.new-select__item[data-value="/models/'+url_string[4]+'/modifications/'+url_string[6]+'/"] span').text());
+      }else{
+        $('.modification').addClass('invisible');
+      }
+  } 
+
+  var url_string = window.location.href
+
+  $('.click .new-select__item').on('click', function() { 
+      var link = $(this).attr('data-value');
+      if(link){
+        document.location.href = link;
+        console.log(link);
+      }
   });
 
+    $('.clickjs .new-select__item').on('click', function() {
+      $('.car-iteam').hide(); 
+      var link = $(this).attr('data-value');
+      console.log(link);
+      if(link){
+          $('.car-iteam[complect="'+link+'"]').show();
+      }
+  });
+  
+});
+
+ 
 
 // });

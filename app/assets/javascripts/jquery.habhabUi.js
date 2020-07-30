@@ -1,6 +1,71 @@
 $( document ).ready(function() {
-  habhabUi.sliderInt('.slider-price');
   habhabUi.selectBox('select');
+
+  document.priceMin = parseInt($("#filter__range").attr('pricemin'));
+  document.priceMax = parseInt($("#filter__range").attr('pricemax'));
+
+  if(getURLVar('pricemin') != ""){
+    document.nowPriceMin = parseInt(getURLVar('pricemin'));
+  }else{
+    document.nowPriceMin = document.priceMin;
+  }
+  if(getURLVar('pricemax') != ""){
+    document.nowPriceMax = parseInt(getURLVar('pricemax'));
+  }else{
+    document.nowPriceMax = document.priceMax;
+  }
+
+  if(getURLVar('pricesort') == "min"){
+    $('.orderby').addClass('min');
+  }else{
+    $('.orderby').addClass('max');
+  }
+
+  $('.orderby').on('click', function(){
+
+    var sort = 'min';
+
+    if(getURLVar('pricesort') == "min"){
+      sort = 'max';
+    }
+
+    if(getURLVar('pricemin') == ""){
+        document.location.href = document.location.pathname+'?pricesort='+sort;
+    }else{
+        document.location.href = document.location.pathname+'?pricemin='+getURLVar('pricemin')+'&pricemax='+getURLVar('pricemax')+'&pricesort='+sort;
+    }
+
+  });
+
+
+  $("#filter__range").slider({
+    min: document.priceMin,
+    max: document.priceMax,
+    values: [document.nowPriceMin, document.nowPriceMax],
+    range: true,
+    stop: function(event, ui) {
+      $("input#priceMin").val($("#filter__range").slider("values",0));
+      $("input#priceMax").val($("#filter__range").slider("values",1));
+
+      $('.price-range-min.value').html($("#filter__range").slider("values",0));
+      $('.price-range-max.value').html($("#filter__range").slider("values",1));
+
+      document.location.href = document.location.pathname+'?pricemin='+$("#filter__range").slider("values",0)+'&pricemax='+$("#filter__range").slider("values",1);
+      console.log(document.location.pathname);
+
+    },
+    slide: function(event, ui){
+      $("input#priceMin").val($("#filter__range").slider("values",0));
+      $("input#priceMax").val($("#filter__range").slider("values",1));
+
+      $('.price-range-min.value').html($("#filter__range").slider("values",0));
+      $('.price-range-max.value').html($("#filter__range").slider("values",1));
+    }
+  });
+
+  $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#filter__range').slider('values', 0 ) + '</span>');
+  $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#filter__range').slider('values', 1 ) + '</span>');
+
 });
 
 var habhabUi = {
@@ -39,8 +104,8 @@ var habhabUi = {
           const selectItem = selectList.find('.new-select__item');
           selectList.slideUp(0);
           selectHead.on('click', function() {
-              if ( !$(this).hasClass('on') ) {
-                  $(this).addClass('on');
+              if ( !$(this).parent('.select').hasClass('on') ) {
+                  $(this).parent('.select').addClass('on');
                   selectList.slideDown(duration);
 
                   selectItem.on('click', function() {
@@ -54,76 +119,12 @@ var habhabUi = {
                   });
 
               } else {
-                  $(this).removeClass('on');
+                  $(this).parent('.select').removeClass('on');
                   selectList.slideUp(duration);
               }
           });
       });
-    },
-    sliderInt: function(elem) {
-        var drag = false;
-        var values = [];
-            
-        $(elem).each(function(i,e){
-            updateView(e);
-        });
-
-        $(elem+">.bar>.lp, "+elem+">.bar>.rp").on("mousedown", function(){
-            drag = $(this);
-        })
-
-        $(document).on("mousemove",function(e){
-              if(!drag)
-              return;
-              var x = (e.pageX - $(drag).outerWidth()/2 - $(drag).parent().parent().offset().left)/$(drag).parent().parent().outerWidth();
-              if(x < 0 ) x = 0;
-              if(x > 1) x = 1;
-              var rp = $(drag).parent().find(".rp");
-              var lp = $(drag).parent().find(".lp");
-              if($(drag).hasClass("lp") && x > $(rp).attr("data-pos") ){
-                  $(rp).attr("data-pos",x);
-              }
-              if($(drag).hasClass("rp") && x < $(lp).attr("data-pos") ){
-                  $(lp).attr("data-pos",x);
-              }
-              $(drag).attr("data-pos",x);
-              updateView($(drag).parent().parent());
-        });
-
-        $(document).on("mouseup", function(){
-            drag = false;
-        });
-
-        function updateView(slider){
-          var startVal = parseInt($(slider).find(".bar").data("start"));
-          var endVal = parseInt($(slider).find(".bar").data("end"));
-
-          if(startVal > endVal)
-            endVal = startVal;
-            startVal = startVal || 0;
-          endVal = endVal || 100;
-
-          var values = [];
-          for(var i = startVal; i <= endVal;i++)
-            values.push(i);
-            var l  =$(slider).find(".lp").attr("data-pos");
-            var r  =$(slider).find(".rp").attr("data-pos");
-            var max  =$(slider).find(".rp").attr("data-max");
-            var proc = max/100;
-          var x = $(slider).outerWidth() * l;
-          var w = (r - l)*$(slider).outerWidth();
-
-          $(slider).find(".bar").css({left:x+"px",width:w+"px"});
-          var index = Math.round(values.length*l);
-          if(index >= values.length)
-            index = values.length-1;
-          $(slider).find(".lp").html("<span>"+values[index]*proc+"</span>");
-
-          index = Math.round(values.length*r);
-          if(index >= values.length)
-            index = values.length-1;
-          $(slider).find(".rp").html("<span>"+values[index]*proc+"</span>");
-        }
     }
 };
+
 

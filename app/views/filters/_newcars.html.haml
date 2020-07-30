@@ -1,0 +1,30 @@
+%section#filters.contentpage
+  .contentpage_box
+    %h1 Новые автомобили в наличии
+    .fields-box
+      .field-33.click.model
+        %select{:name => "model"}
+          %option{:disabled => "disabled" } Все модели
+          - models.each do |model|
+            %option{:value => "/models/#{model.url}/" }
+              = model.model
+      .field-33.click.kuzov
+        %select{:name => "model"}
+          %option{:disabled => "disabled"} Кузов
+          - if model
+            - model.modifications.each do |modification|
+              %option{:value => "/models/#{@model.url}/modifications/#{modification.anchor_name}/" }
+                = modification.name
+      .field-33.clickjs.modification
+        %select{:name => "model"}
+          %option{:disabled => "disabled"} Комплектация
+          - if modification
+            - complectations_(modification.complectations).each do |complectation|
+              %option{:value => "##{complectation}" }
+                = complectation
+    .slider-price
+      #filter__range{:pricemin => filter.complectations_minimum_price, :pricemax => filter.complectations_maximum_price}
+    .fields-box
+      %a.refresh{ :href => '/models' }
+        Сбросить все
+      .orderby Сортировка:  по цене

@@ -1,0 +1,61 @@
+.parser {
+  .control-panel-parser {
+    // border: 1px solid red;
+    margin: 0 25px;
+    display: inline-block;
+    float: left;
+    clear: both;
+    div {
+      float: left;
+    }
+    .item-control {
+      // border: 1px solid orange;
+      .link {
+        // border: 1px solid purple;
+        a {
+          font-size: x-large;
+          line-height: normal;
+        }
+      }
+    }
+    .wrapper {
+      // border: 1px solid black;
+      float: left;
+      .ok {
+        display: none;
+        margin-top: 1px;
+        // border: 1px solid blue;
+        img {
+          width: 24px;
+          position: absolute;
+          margin-left: 141px;
+        }
+      }
+      .status {
+        display: none;
+        // border: 1px solid green;
+        margin-left: -100px;
+        z-index: 9;
+        img {
+          position: absolute;
+          padding-top: -100px;
+          // border: 1px solid red;
+          margin-top: -239px;
+          width: 500px;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  .podval {
+    br {
+      clear: both;
+    }
+    .console {
+      border: 1px solid gray;
+    }
+    code {
+      font-family: monospace;
+    }
+  }
+}

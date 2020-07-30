@@ -1,0 +1,86 @@
+%section#car.contentpage.animated.fadeIn
+  .slider
+    %ul.sliderwrapper
+      - @sliders.each do |slide|
+        %li.slide{:style => "background-image: url('#{slide.gallery.url}');"}
+          - if slide.slave
+            .VideoYoutube
+              %iframe{:allow => "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", :controls => "0", :frameborder => "0", :height => "100%", :src => slide.slave+"?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1", :width => "100%"}
+    .prev-btn
+    .next-btn
+  .contentpage_box
+    %h1
+      = @complectation.title
+    .general-info
+      .info-line
+        .line-left Двигатель:
+        .line-right
+          = @complectation.engine+' / ( '+@complectation.power.to_s+' л. с.)'
+          / 1,6 л / (106 л.с.) / Бензиновый
+      .info-line
+        .line-left Трансмиссия:
+        .line-right
+          = @complectation.transmission
+      .info-line
+        .line-left
+          Цвета:
+        .line-right
+          - @complectation.modification.colors.each do |color|
+            .colors.js-colors{ :style => 'background-color: #'+color.rgb, "color-id" => color.id, "modification-id" => @complectation.modification.id }
+      .info-line
+        .line-left Комплектация:
+        .line-right
+          = @complectation.name
+      .info-line
+        .line-left Год выпуска:
+        .line-right
+          = Date.today.year
+      - if @complectation.price_old
+        .info-sale
+          .price-old
+            .price
+              = number_to_currency(@complectation.price_old, precision: 0, unit: "") 
+              ₽
+            .line
+              .subline
+      .info-price
+        = number_to_currency(@complectation.price_new, precision: 0, unit: "") 
+        ₽
+      %a.buttonA.popupOpen{:onclick => "return false;"} Получить предложение
+      %a.buttonB{:href => "#"} 
+        в Кредит от 
+        = number_to_currency(@complectation.credit_day, precision: 0, unit: "") 
+        ₽ / мес
+    .slave-info
+      .car-image.complectation-img
+        - if @complectation.modification.modification_images.first.try(:image)
+          = image_tag @complectation.modification.modification_images.first.try(:image).url, class: 'ml'
+        - else
+          = image_tag @complectation.modification.model.image.url, class: 'sm'
+%section#car-info.contentpage.animated.fadeIn
+  .contentpage_box
+    .content-left
+      .tabs
+        %input#tab1{:checked => "checked", :name => "tabs", :type => "radio"}/
+        %label{:for => "tab1", :title => "Вкладка 1"} Характеристики
+        %input#tab2{:name => "tabs", :type => "radio"}/
+        %label{:for => "tab2", :title => "Вкладка 2"} Комплектация
+
+        = render 'tab1', complectation: @complectation
+
+        %span#content-tab2
+          - @complectation.options_properties.each_with_index do |property, index|
+            .on-down
+              %input{:type => "checkbox", :id => "q"+(index+1).to_s}/
+              %label{:for => "q"+(index+1).to_s} 
+                = property.name
+              .cont
+                - property.items.each do |item|
+                  .on-down-line
+                    = item.title
+    .content-right
+      %p
+        Постоянный «железный» полный привод 4х4 – гарантия вашей уверенности на бездорожье, неровностях рельефа и при движении по скользкой дороге.
+      %a.buttonA.drive{:href => "https://prime.lada.ru/ds/test-drive/", :target => 'blank_' } ТЕС-ДРАЙВ
+      %a.buttonA.calc{:href => "https://prime.lada.ru/ds/form_credit.php", :target => 'blank_' }  Расчитать кредит
+      %a.buttonA.price{:href => "https://prime.lada.ru/ds/cars/#{@complectation.modification.model.url}/#{@complectation.modification.anchor_name}/print_prices.pdf", :target => 'blank_'} Прайс-лист

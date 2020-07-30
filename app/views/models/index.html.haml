@@ -1,0 +1,6 @@
+= render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: Model
+
+%section#cars.contentpage
+  .contentpage_box
+    .cars-box
+      = render 'model', elements: @elements, has_complectation: false

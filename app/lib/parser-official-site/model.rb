@@ -1,19 +1,27 @@
 module ParserOfficialSite
-  
   class Model
     attr_reader :models
 
-    def initialize url
+    def initialize domain
+      @domain = domain
       @models = []
 
-      parse_content get_content url
+      parse_content get_content
     end
     
     def parse_content data
       # Get model`s
       fiber_model = Fiber.new do
         data.css('.cars-menu__sem-name').each do |model|
-          Fiber.yield model.text, model.parent.attributes["href"].value
+          href_exist = true
+          begin
+            model = model.parent.attributes["href"].value
+          rescue Exception => e
+            # Временно описание модели отсутствует..
+            puts 'no exist'
+            href_exist = false
+          end
+          href_exist ? Fiber.yield( model.text, model.parent.attributes["href"].value) : Fiber.yield( model.text, '#') 
         end
       end
 
@@ -31,6 +39,7 @@ module ParserOfficialSite
 
         # Remove &nbsp and other null first and last symbols
         model_, link = fiber_model.resume
+        
         image = fiber_image.resume
         model = model_.scan(/(\w+\s*\w+)/)[0][0]
 
@@ -39,12 +48,14 @@ module ParserOfficialSite
         next if image.nil? or model.nil?
 
         # [ {name: '', url:''}, .. ]
-        complectations = []
+        modifications = []
         block.css('.cars-menu__base-name').each do |complectation|
-          complectations.push({"name" => complectation.text, "url" => complectation.attributes["href"].value })
+          about_url = complectation.attributes["href"].value
+          price_url = get_price_url( about_url )
+          modifications.push({"name" => complectation.text, "about_url" => complectation.attributes["href"].value, "price_url" => price_url  })
         end
 
-        @models.push({ "model" => model, "link" => link ,"image" => image, "complectations" => complectations })
+        @models.push({ "model" => model, "link" => link ,"image" => image, "modifications" => modifications })
       end
 
       @models
@@ -53,19 +64,18 @@ module ParserOfficialSite
     private
 
       # If not exist then parse ELSE get content from BD
-      def get_content url
+      def get_content
         time    = Time.now.strftime "%d/%m/%Y"
         
         content = nil
 
         if content
           # puts "CONTENT FROM BD"
-
         else
           # puts "!!!CONTENT FROM SITE!!!"
 
-          # Open url parsed site and read HTML
-          content = open( url ) do |http|
+          # Open domain parsed site and read HTML
+          content = open( @domain ) do |http|
             @html = http.read
           end
 
@@ -75,5 +85,23 @@ module ParserOfficialSite
         Nokogiri::HTML( content )
       end
 
+      # Get prices links for modifications
+      def get_price_url link
+        content = open( "#{@domain}#{link}" ) do |http|
+          @html = http.read
+        end
+        sleep 0.3
+        # Parse content for links price model (casecar) - modifications
+        Nokogiri::HTML( content ).css('.quick_nav_text').each do |link|
+          href = link.attributes["href"].value
+          return href if href.scan('prices.html')[0]
+        end
+        # Old style - parce price from TOP slider
+        Nokogiri::HTML( content ).css('.kompL_footer_button1').each do |link|
+          href = link.attributes["href"].value
+          return href if href.scan('prices.html')[0]
+        end
+        return '#'
+      end
   end
 end

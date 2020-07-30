@@ -1,0 +1,22 @@
+<span id="content-tab1">
+  <% Engine.find_by( modification_id: complectation.modification.id, name: complectation.subname ).specifications.each_with_index do |specification, index| %>
+    <div class="on-down">
+      <input id="w<%=index+1%>" type="checkbox" <%= "checked" if index == 0 %>>
+      <label for="w<%=index+1%>">
+        <%= specification.name %>
+      </label>
+    <% JSON.parse( specification.description ).each do |item| %>
+      <div class="info-line cont">
+        <div class="on-down-line">
+          <div class="line-left">
+            <%= "#{item.keys[0]}:" %>
+          </div>
+          <div class="line-right">
+            <%= item[item.keys[0]].capitalize()  %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</span>

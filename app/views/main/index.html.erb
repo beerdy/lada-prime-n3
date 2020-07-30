@@ -2,17 +2,18 @@
   <div class="menuBox">
     <nav class="menu">
       <% @models.each do |model| %>
-      <a href="https://prime.lada.ru<%= model.link %>" target="_blank" class="iteam"><%= model.model %></a>
+      <!-- <a href="https://prime.lada.ru<%= model.link %>" target="_blank" class="iteam"><%= model.model %></a> -->
+      <a href="/models/<%= model.url %>" class="iteam"><%= model.model %></a>
       <% end %>
     </nav>
   </div>
   <div class="slider">
     <ul class="sliderwrapper">
-      <% @sliders.each do |slide| %>
+      <% sort_null(@sliders).each do |slide| %>
       <li class="slide" style="background-image: url('<%= slide.gallery.url %>');">
         <% if slide.slave %>
         <div class="VideoYoutube"><iframe width="100%" height="100%" src="<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
-        <% end %>
+        <% end if Rails.env.production? %>
         <div class="slideContent">
           <div class="textBox">
             <div class="word1"><%= slide.word1.html_safe %></div>
@@ -54,10 +55,10 @@
                 <div class="cars">
                     <% @models.each do |model| %>
                       <div class="car" style="background-image: url(<%= model.image.url %>)">
-                        <a href="https://prime.lada.ru<%= model.link %>" target="_blank"><h3><%= model.model %></h3></a>
-                        <div class="price"><span>от</span> <%= model.product.price %> <i class="fa fa-rub" style="font-size: 13pt;"></i></div>
-                        <% JSON.parse(model.complectations).each do |complectation| %>
-                        <a href="https://prime.lada.ru<%= complectation['url'] %>" target="_blank" class="iteam"><%= complectation['name'] %></a>
+                        <a href="/models/<%= model.url %>"><h3><%= model.model %></h3></a>
+                        <div class="price"><span>от</span> <%= model.product.try(:price) if model.product %> <i class="fa fa-rub" style="font-size: 13pt;"></i></div>
+                        <% model.modifications.each do |modification| %>
+                          <a href="<%= modification_link(modification.model.url, modification.anchor_name ) %>" class="iteam"><%= modification.name %></a>
                         <% end %>
                         <div class="sashka"></div>
                         <a href="https://prime.lada.ru/ds/test-drive/" target="_blank"  class="buttonC">Пройти тест-драйв</a>
@@ -72,7 +73,7 @@
             </span> 
                 <div class="tradein">
                   <h4>АВТО с ПРОБЕГОМ <span>TRADE-IN</span></h4>
-                    <a href="https://www.avito.ru/lipetskprime" target="_blank" class="buttonA">Выбрать автомобиль</a>
+                    <a href="https://www.avito.ru/user/a4142adef5f13edfe5c491d4d7a2009a/profile?id=1876463581&src=item" target="_blank" class="buttonA">Выбрать автомобиль</a>
                     <a href="https://prime.lada.ru/ds/cars/evaluation/" target="_blank" class="buttonB">Оценить автомобиль</a>
                 </div>
         </div>

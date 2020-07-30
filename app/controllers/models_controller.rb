@@ -1,15 +1,35 @@
 class ModelsController < ApplicationController
-  before_action :set_model, only: [:show, :edit, :update, :destroy ]
+  include FilterPrice
 
+  before_action :set_model_s, only: [:show, :index]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy, :new ]
+  before_action :filter_price, only: [:show, :index]
+  before_action :set_filter, only: [:show, :index]
+  
   # GET /models
   # GET /models.json
   def index
-    @models = Model.all
+    @models.each do |model|
+      model.modifications.each do |modification|
+        # Modification belong to model
+        @filter.add modification.complectations_minimum_price, modification
+      end
+    end
+
+    @filter.sort_price @pricesort
+    @elements = @filter.elements
   end
 
   # GET /models/1
   # GET /models/1.json
   def show
+    @model.modifications.each do |modification|
+      # Modification belong to model
+      @filter.add modification.complectations_minimum_price, modification
+    end
+
+    @filter.sort_price @pricesort
+    @elements = @filter.elements
   end
 
   # GET /models/new
@@ -24,17 +44,6 @@ class ModelsController < ApplicationController
   # POST /models
   # POST /models.json
   def create
-    @model = Model.new
-
-    # Port prime.lada.ru
-    parser = ParserOfficialSite::Model.new "https://prime.lada.ru/"
-    models = parser.models
-    errors = nil
-
-    models.each do |model|
-      save_model model unless Model.find_by( model: model["model"] )
-    end
-
     respond_to do |format|
       unless errors.nil?
         format.html { redirect_to models_path, notice: 'Model was successfully created.' }
@@ -71,19 +80,18 @@ class ModelsController < ApplicationController
   end
 
   private
-    def save_model model, domain='https://prime.lada.ru'
-      temp = Model.new( model: model["model"], link: model["link"], complectations: model["complectations"].to_json )
-      return unless temp.picture_from_link( domain+model["image"] )
-      temp.save
-    end
-
     # Use callbacks to share common setup or constraints between actions.
-    def set_model
-      @model = Model.find(params[:id])
+    def set_model_s
+      @models = Model.all
+      
+      @model  = Model.find_by( id: params[:id] )
+      @model  = Model.find_by( url: params[:id] ) unless @model
     end
-
+    def set_filter
+      @filter = Filter.new( @pricemin, @pricemax )
+    end
     # Only allow a list of trusted parameters through.
     def model_params
-      params.require(:model).permit(:model, :description, :complectations, :slave, :link, :url, :sort, :show)
+      params.require(:model).permit(:model, :description, :links, :slave, :link, :url, :sort, :show)
     end
 end

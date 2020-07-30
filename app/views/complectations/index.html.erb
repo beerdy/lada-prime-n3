@@ -2,66 +2,6 @@
 
 <h1>Complectations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Engine</th>
-      <th>Clapan</th>
-      <th>Power</th>
-      <th>Transmission</th>
-      <th>Type</th>
-      <th>Color</th>
-      <th>Type</th>
-      <th>Owners</th>
-      <th>Millage</th>
-      <th>Case</th>
-      <th>Drive</th>
-      <th>Year</th>
-      <th>Condition</th>
-      <th>Price new</th>
-      <th>Price old</th>
-      <th>Link</th>
-      <th>Url</th>
-      <th>Sort</th>
-      <th>Show</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @complectations.each do |complectation| %>
-      <tr>
-        <td><%= complectation.title %></td>
-        <td><%= complectation.description %></td>
-        <td><%= complectation.engine %></td>
-        <td><%= complectation.clapan %></td>
-        <td><%= complectation.power %></td>
-        <td><%= complectation.transmission %></td>
-        <td><%= complectation.type %></td>
-        <td><%= complectation.color %></td>
-        <td><%= complectation.type %></td>
-        <td><%= complectation.owners %></td>
-        <td><%= complectation.millage %></td>
-        <td><%= complectation.case %></td>
-        <td><%= complectation.drive %></td>
-        <td><%= complectation.year %></td>
-        <td><%= complectation.condition %></td>
-        <td><%= complectation.price_new %></td>
-        <td><%= complectation.price_old %></td>
-        <td><%= complectation.link %></td>
-        <td><%= complectation.url %></td>
-        <td><%= complectation.sort %></td>
-        <td><%= complectation.show %></td>
-        <td><%= link_to 'Show', complectation %></td>
-        <td><%= link_to 'Edit', edit_complectation_path(complectation) %></td>
-        <td><%= link_to 'Destroy', complectation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<p>Комплектации успешно загруженны!</p>
 
 <%= link_to 'New Complectation', new_complectation_path %>

@@ -1,0 +1,9 @@
+= render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: @model
+
+%section#cars.contentpage
+  .contentpage_box
+    .cars-box
+      %h2 
+        ЛАДА
+        = @model.model.upcase
+      = render 'model', elements: @elements, has_complectation: true

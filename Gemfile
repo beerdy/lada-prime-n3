@@ -30,9 +30,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "haml-rails", "~> 2.0"
+
 gem 'devise'
 gem 'rails_admin', '~> 2.0'
 gem 'paperclip',   '~> 6.0.0'
+gem "redis", "~> 3.0"
 
 gem 'yaml_db'
 gem 'mysql2'
@@ -41,6 +44,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'ckeditor'
+
 
 gem "font-awesome-rails"
 

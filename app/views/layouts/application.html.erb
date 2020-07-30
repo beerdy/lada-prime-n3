@@ -21,10 +21,10 @@
         <a href="/" class="logoBlock"></a>
         <div id="location" class="location">
           <div class="city">г. Липецк</div>
-          <span><%= @place.html_safe %></span>
+          <span><%= @place.html_safe if @place %></span>
         </div>
         <div class="phone">
-          <%= @phone.html_safe %>
+          <%= @phone.html_safe if @phone%>
           <span>горячая линия</span>
         </div>
       </div>
@@ -33,16 +33,16 @@
 
     <%= yield %>
 
-    <%= @footer.html_safe %>
+    <%= @footer.html_safe if Rails.env.production?%>
     <section id="contacts" class="contentpage">
       <div class="contentpage_box">
           <h2>Контакты</h2>
           <div style="overflow:hidden;margin:0 0 20px 0;">
-            <div class="phone"><%= @phone.html_safe %></div>
-            <div class="mail"><%= @email.html_safe %></div>
-            <div class="place"><%= @place.html_safe %></div>
+            <div class="phone"><%= @phone.html_safe if @phone%></div>
+            <div class="mail"><%=  @email.html_safe if @email%></div>
+            <div class="place"><%= @place.html_safe if @place%></div>
           </div>
-          <%= @map.html_safe %>
+          <%= @map.html_safe if Rails.env.production? %>
       </div>
     </section>
 

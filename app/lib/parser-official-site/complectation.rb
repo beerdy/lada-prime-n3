@@ -4,7 +4,10 @@ module ParserOfficialSite
     attr_reader :table, :colors_block, :colors_options, :name, :price_min_str, :devise, :id, :pdf_price
     attr_accessor :colors_btns, :url1
 
-    def initialize
+    def initialize domain=nil
+      @domain = domain
+      
+      @id             = '0'
       @table          = []
       @price_min      = 9999999
       @price_min_str  = '100 000 руб'
@@ -14,16 +17,21 @@ module ParserOfficialSite
     end
     
     def load url
+      sleep 0.5
       html = open(url)
       @doc = Nokogiri::HTML(html)
     end
     
     def parse
-      @id           = @doc.css('.kompl_compare')[0]['base_id'].to_i
-      @name         = @doc.css('#zag').text.gsub!('КОНФИГУРАТОР', '').scan(/([a-zA-Zа-яА-Я0-9.]+)/).join(' ')
-      @devise       = @doc.css('#zagtxt').inner_html
-      @colors_block = @doc.css('.color_list')[0].inner_html
-      @pdf_price    = @doc.css('.all_compl')[0]["href"]
+      begin
+        @id           = @doc.css('.kompl_compare')[0]['base_id']
+        @name         = @doc.css('#zag').text.gsub!('КОНФИГУРАТОР', '').scan(/([a-zA-Zа-яА-Я0-9.]+)/).join(' ')
+        @devise       = @doc.css('#zagtxt').inner_html
+        @colors_block = @doc.css('.color_list')[0].inner_html
+        @pdf_price    = @doc.css('.all_compl')[0]["href"]        
+      rescue Exception => e
+        
+      end
 
       @doc.css('.kompl').each do |item|
         item_params item
@@ -36,9 +44,6 @@ module ParserOfficialSite
           :title => item['title']
         }
       end
-
-      # Modify in controller from BD
-      # @colors_btns = @doc.css('#colors').inner_html
     end
 
     private
@@ -54,13 +59,14 @@ module ParserOfficialSite
       def item_params item
         prices   = get_prices item
         kompl_id = item.attributes["id"]
+        # pp item.attributes["id"]
         @table.push({
-          :kompl_id   => kompl_id.value,
-          :kompl_name => item.css('.kompl_name').text,
-          :colors_htm => get_colors( item.css('.has_dealer') ),
-          :price_new  => prices[0].text,
-          :price_old  => prices[1].try(:text),
-          :property   => get_property( kompl_id )
+          :kompl_id    => kompl_id.value,
+          :kompl_name  => item.css('.kompl_name').text,
+          :color_codes => get_color_codes( item.css('.has_dealer') ),
+          :price_new   => prices[0].text,
+          :price_old   => prices[1].try(:text),
+          :property    => get_property( kompl_id )
         })
       end
 
@@ -80,13 +86,12 @@ module ParserOfficialSite
         return prices 
       end
 
-      def get_colors item
-        colors = ''
-        item.css('.color_dealer').each do |color|
-          colors += color.to_s
-        end
-
-        return colors
+      def get_color_codes item, colors_block=nil, color_codes=[]
+        colors_block = item.css('.color_dealer')
+        colors_block.each do |color|
+          color_codes.push color.attributes["code"].value
+        end if colors_block
+        return color_codes
       end
 
       def get_property kompl_id

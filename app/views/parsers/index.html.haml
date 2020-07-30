@@ -1,0 +1,57 @@
+%section.parser
+  %h1
+  %h1
+  %h1 Парсер
+
+  .control-panel-parser
+    .item-control
+      .link 
+        = link_to '/parsers/tth', method: :post, confirm: 'Спарсить?', :remote => true, class: 'parse-model' do
+          Спарсить тех. характеристики
+    .wrapper      
+      .ok
+        = image_tag 'ok.png'
+      .status
+        = image_tag 'status.gif'
+  .control-panel-parser
+    .item-control
+      .link 
+        = link_to '/parsers/model', method: :post, confirm: 'Спарсить?', :remote => true, class: 'parse-model' do
+          Спарсить модели
+    .wrapper      
+      .ok
+        = image_tag 'ok.png'
+      .status
+        = image_tag 'status.gif'
+  .control-panel-parser
+    .item-control
+      .link 
+        = link_to '/parsers/complectation', method: :post, confirm: 'Спарсить?', :remote => true, class: 'parse-model' do
+          Спарсить комплектации
+    .wrapper      
+      .ok
+        = image_tag 'ok.png'
+      .status
+        = image_tag 'status.gif'
+  .control-panel-parser
+    .item-control
+      .link 
+        = link_to '/parsers/instock_price', method: :post, confirm: 'Спарсить?', :remote => true, class: 'parse-model' do
+          Спарсить наличие и цены
+  .control-panel-parser
+    .item-control
+      .link 
+        = link_to '/parsers/modification_image', method: :post, confirm: 'Спарсить?', :remote => true, class: 'parse-model' do
+          Спарсить цвета и картинки
+    .wrapper      
+      .ok
+        = image_tag 'ok.png'
+      .status
+        = image_tag 'status.gif'
+  .podval
+    %br
+    %hr
+    %h3 Подвал:
+    %ul#console
+
+

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :properties
-  resources :complectations
+
+  resources :engines
+  resources :specifications
+  get 'modification_images/show'
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
@@ -14,11 +16,30 @@ Rails.application.routes.draw do
   
   resources :messages
   resources :pages, only: [:show]
-  
+  resources :complectations, only: [:show]
+
+  resources :models do
+    resources :modifications
+  end
+  resources :modification_images, only: [:image] do
+    collection do
+      post :image
+    end
+  end
+  resources :parsers do
+    collection do
+      post :model
+      post :complectation
+      post :modification_image
+      post :instock_price
+      post :tth
+    end
+  end
+
   resources :cars, only: [:show, :index]
 
+  # resources :properties
   # resources :projects
-  # resources :models
   # resources :galleries
   # resources :contents
   # resources :products

@@ -1,0 +1,43 @@
+%section#filters.contentpage
+  .contentpage_box
+    %h1 Новые автомобили в наличии
+    .fields-box
+      .field-25
+        %select{:name => "model"}
+          %option{:disabled => "disabled", :onchange => "location = this.value;" } Все модели
+          - @models.each do |model|
+            %option{:value => "/models/#{model.url}" }= model.model
+      .field-25
+        %select{:name => "model"}
+          %option{:disabled => "disabled"} Модификация
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+      .field-25
+        %select{:name => "model"}
+          %option{:disabled => "disabled"} Комплектация
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+      .field-25
+        %select{:name => "model"}
+          %option{:disabled => "disabled"} Цвет
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+          %option{:value => "Lada"} Lada
+    .slider-price
+      .bar
+        .lp{"data-pos" => "0.1"}
+        .rp{"data-max" => "56000", "data-pos" => "0.8"}
+    .fields-box
+      .refresh Сбросить все
+      .orderby Сортировка: по цене
+
+%section#cars.contentpage
+  .contentpage_box
+    .cars-box
+      - @models.each do |model|
+        = render 'model', model: model, has_complectation: false
