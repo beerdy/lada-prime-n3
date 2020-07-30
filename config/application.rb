@@ -19,7 +19,8 @@ module LadaPrime
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'lada-prime.ru','lada-prime.ru:80','lada-prime.ru:443','www.lada-prime.ru','www.lada-prime.ru:80','www.lada-prime.ru:443'
+        # origins 'lada-prime.ru','lada-prime.ru:80','lada-prime.ru:443','www.lada-prime.ru','www.lada-prime.ru:80','www.lada-prime.ru:443'
+        origins '*'
         resource '*', headers: :any, methods: [:get, :post, :delete, :put, :patch, :options, :head]
       end
     end

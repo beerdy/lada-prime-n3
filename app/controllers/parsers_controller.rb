@@ -1,6 +1,7 @@
 class ParsersController < ApplicationController
   before_action :init
-
+  before_action :authenticate_user!
+  
   def init
     @domain = "https://prime.lada.ru/"
   end
