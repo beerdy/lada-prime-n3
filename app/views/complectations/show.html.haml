@@ -80,7 +80,13 @@
                     = item.title
     .content-right
       %p
-        Постоянный «железный» полный привод 4х4 – гарантия вашей уверенности на бездорожье, неровностях рельефа и при движении по скользкой дороге.
+        Вбрать цвет, цену, технические характеристики и опции, подбрать оптимальную для себя комплектацию автомобиля ЛАДА
+        = @complectation.modification.name 
+        можно прямо нашем сайте, официального дилера ЛАДА в Липецке - ПРАЙМ
+      %p
+        Определились с выбором? Отлично! Тогда отправляйте online-заявку на тест-драйв, расчет кредита или
+        покупку
+        = @complectation.modification.name 
       %a.buttonA.drive{:href => "https://prime.lada.ru/ds/test-drive/", :target => 'blank_' } ТЕС-ДРАЙВ
       %a.buttonA.calc{:href => "https://prime.lada.ru/ds/form_credit.php", :target => 'blank_' }  Расчитать кредит
       %a.buttonA.price{:href => "https://prime.lada.ru/ds/cars/#{@complectation.modification.model.url}/#{@complectation.modification.anchor_name}/print_prices.pdf", :target => 'blank_'} Прайс-лист
