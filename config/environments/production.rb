@@ -80,6 +80,8 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  config.web_socket_server_url = "wss://lada-prime.ru/cable" 
+  config.action_cable.url = 'wss://lada-prime.ru/cable'
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
