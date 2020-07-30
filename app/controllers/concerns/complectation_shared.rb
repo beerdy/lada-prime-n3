@@ -24,10 +24,10 @@ class ComplectationShared
 
   private
     def complectation_modify item, complectation_id, model_id, modification_id
-      complectation = Complectation.where(complectation_id: complectation_id)
+      complectation = Complectation.find_by(complectation_id: complectation_id)
       request_ = complectation_params_prepare( item, complectation_id )
       if complectation #
-        complectation.update_all( request_ )
+        complectation.update( request_ )
       else
         complectation = Complectation.create( request_.merge( model_id: model_id, modification_id: modification_id ) )
       end

@@ -26,7 +26,7 @@ class ParsersController < ApplicationController
     # @complectations_added = []
     # @complectations_exist = Complectation.pluck(:complectation_id)
 
-    Thread.new do
+    # Thread.new do
       Model.all.each do |model|
         modifications = JSON.parse( model.links )
         modifications.each do |modification|
@@ -47,7 +47,7 @@ class ParsersController < ApplicationController
 
         end if modifications
       end
-    end
+    # end
 
     render json: { info: 'parsing in process..' }, status: 200
   end
