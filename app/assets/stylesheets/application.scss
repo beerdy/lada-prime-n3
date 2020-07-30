@@ -14,7 +14,7 @@
  *= require_self
  */
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap&subset=cyrillic');
+@import image-url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap&subset=cyrillic');
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -1661,7 +1661,7 @@ footer{
 	    position: absolute;
 	    right: 10px;
 	    top: 0px;
-	    background: url('ico_add.svg') no-repeat right center;
+	    background: image-url('ico_add.svg') no-repeat right center;
 	    background-size: 24px 24px;
 
 	    -webkit-transition: all .27s ease-in-out;
@@ -1685,11 +1685,11 @@ footer{
 	    text-align: right;
 	}
 		.orderby.min{
-			background: url('ico_arrow_up.svg') no-repeat right 15px center;
+			background: image-url('ico_arrow_up.svg') no-repeat right 15px center;
 			background-size: 13px 13px;
 		}
 		.orderby.max{
-			background: url('ico_arrow_down.svg') no-repeat right 15px center;
+			background: image-url('ico_arrow_down.svg') no-repeat right 15px center;
 			background-size: 13px 13px;
 		}
 
@@ -1713,7 +1713,7 @@ footer{
 	    position: absolute;
 	    right: 10px;
 	    top: 0px;
-	    background: url('ico_close.svg') no-repeat right center;
+	    background: image-url('ico_close.svg') no-repeat right center;
 	    background-size: 24px 24px;
 
 	    -webkit-transition: all .27s ease-in-out;
@@ -1781,7 +1781,7 @@ footer{
 				    position: absolute;
 				    right: 10px;
 				    top: 0px;
-				    background: url('ico_select_arrow.svg') no-repeat right center;
+				    background: image-url('ico_select_arrow.svg') no-repeat right center;
 				    background-size: 12px 12px;
 
 				    -webkit-transition: all .27s ease-in-out;
@@ -1869,7 +1869,7 @@ footer{
 				padding:10px 20px 10px 20px;
 				color:#fff;
 				text-align: center;
-				background: #F7761F url('ico_sale.svg') no-repeat left 30px center;
+				background: #F7761F image-url('ico_sale.svg') no-repeat left 30px center;
 			    background-size:24px 24px;
 			    font-size: 18px;
 			}
@@ -2139,7 +2139,7 @@ footer{
 		font-size: 14px;
 		line-height: 19px;
 		color: #4C616B;
-		background: url('ico_ok.svg') no-repeat left center;
+		background: image-url('ico_ok.svg') no-repeat left center;
 		background-size: 12px 12px;
 		padding: 0 0 0 20px;
 	}
