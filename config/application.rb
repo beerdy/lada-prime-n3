@@ -17,6 +17,13 @@ module LadaPrime
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'lada-prime.ru','lada-prime.ru:80','lada-prime.ru:443','www.lada-prime.ru','www.lada-prime.ru:80','www.lada-prime.ru:443'
+        resource '*', headers: :any, methods: [:get, :post, :delete, :put, :patch, :options, :head]
+      end
+    end
+
     # For 404 page
     require Rails.root.join("lib/custom_public_exceptions")    
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)

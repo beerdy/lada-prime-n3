@@ -158,6 +158,8 @@ GEM
     public_suffix (4.0.5)
     puma (3.12.4)
     rack (2.2.2)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -295,6 +297,7 @@ DEPENDENCIES
   mysql2
   paperclip (~> 6.0.0)
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.2.4.2)
   rails_admin (~> 2.0)
   redis (~> 3.0)
