@@ -11,6 +11,12 @@
   .contentpage_box
     %h1
       = @complectation.title
+    .slave-info
+      .car-image.complectation-img
+        - if @complectation.modification.modification_images.first.try(:image)
+          = image_tag @complectation.modification.modification_images.first.try(:image).url, class: 'ml'
+        - else
+          = image_tag @complectation.modification.model.image.url, class: 'sm'
     .general-info
       .info-line
         .line-left Двигатель:
@@ -51,12 +57,6 @@
         в Кредит от 
         = number_to_currency(@complectation.credit_day, precision: 0, unit: "") 
         ₽ / мес
-    .slave-info
-      .car-image.complectation-img
-        - if @complectation.modification.modification_images.first.try(:image)
-          = image_tag @complectation.modification.modification_images.first.try(:image).url, class: 'ml'
-        - else
-          = image_tag @complectation.modification.model.image.url, class: 'sm'
 %section#car-info.contentpage.animated.fadeIn
   .contentpage_box
     .content-left

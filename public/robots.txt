@@ -1,4 +1,11 @@
 User-agent: *
 
+Disallow: *?calltouch_tm=*
+Disallow: /*?calltouch_tm=*
+Disallow: *calltouch_tm=
+Disallow: /?calltouch_tm=*
+Disallow: /admin
+Disallow: /parsers
+
 Host: lada-prime.ru
 Sitemap: http://lada-prime.ru/sitemap.xml
