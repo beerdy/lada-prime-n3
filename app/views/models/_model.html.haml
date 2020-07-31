@@ -5,7 +5,7 @@
     .car-price
       от 
       = number_to_currency(element.modification.complectations_minimum_price, precision: 0, unit: "") 
-      ₽
+      %span.ru-rub ₽
     .car-image
       - if element.modification.modification_images.first.try(:image)
         = image_tag element.modification.modification_images.first.try(:image).url(:medium), class: 'ml'
@@ -14,7 +14,7 @@
     .car-sale
       Скидка до 
       = number_to_currency(element.modification.complectations_diff_price, precision: 0, unit: "") 
-      ₽
+      %span.ru-rub ₽
     .car-modification
       .mod-line
         .mod-left В наличии:

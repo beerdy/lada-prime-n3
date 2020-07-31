@@ -9,7 +9,7 @@
             = @modification.name
           .car-price
             = number_to_currency(complectation.price_new, precision: 0, unit: "") 
-            ₽
+            %span.ru-rub ₽
           .car-image
             - if @modification.modification_images.first.try(:image)
               = image_tag @modification.modification_images.first.try(:image).url(:medium), class: 'ml'
@@ -18,7 +18,7 @@
           .car-sale
             Скидка до 
             = number_to_currency(complectation.diff_price, precision: 0, unit: "") 
-            ₽
+            %span.ru-rub ₽
           .car-modification
             .mod-line
               .mod-left В наличии:

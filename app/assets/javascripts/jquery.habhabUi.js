@@ -47,8 +47,8 @@ $( document ).ready(function() {
       $("input#priceMin").val($("#filter__range").slider("values",0));
       $("input#priceMax").val($("#filter__range").slider("values",1));
 
-      $('.price-range-min.value').html($("#filter__range").slider("values",0));
-      $('.price-range-max.value').html($("#filter__range").slider("values",1));
+      $('.price-range-min.value').html($("#filter__range").slider("values",0).toLocaleString()+"&nbsp;₽");
+      $('.price-range-max.value').html($("#filter__range").slider("values",1).toLocaleString()+"&nbsp;₽");
 
       document.location.href = document.location.pathname+'?pricemin='+$("#filter__range").slider("values",0)+'&pricemax='+$("#filter__range").slider("values",1);
       console.log(document.location.pathname);
@@ -58,13 +58,13 @@ $( document ).ready(function() {
       $("input#priceMin").val($("#filter__range").slider("values",0));
       $("input#priceMax").val($("#filter__range").slider("values",1));
 
-      $('.price-range-min.value').html($("#filter__range").slider("values",0));
-      $('.price-range-max.value').html($("#filter__range").slider("values",1));
+      $('.price-range-min.value').html($("#filter__range").slider("values",0).toLocaleString()+"&nbsp;₽");
+      $('.price-range-max.value').html($("#filter__range").slider("values",1).toLocaleString()+"&nbsp;₽");
     }
   });
 
-  $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#filter__range').slider('values', 0 ) + '</span>');
-  $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#filter__range').slider('values', 1 ) + '</span>');
+  $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#filter__range').slider('values', 0 ).toLocaleString()+"&nbsp;₽"+ '</span>');
+  $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#filter__range').slider('values', 1 ).toLocaleString() +"&nbsp;₽"+ '</span>');
 
 });
 
