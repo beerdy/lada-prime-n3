@@ -19,15 +19,15 @@
     <header class="header animated fadeInDown">
       <div class="contentpage_box">
         <a href="/" class="logoBlock"></a>
+        <a href="tel:<%= @phone.html_safe if @phone%>" class="phone">
+          <%= @phone.html_safe if @phone%>
+          <span>горячая линия</span>
+        </a>
         <div class="connect">
             <a href="https://wa.me/79161457988?text=Добрый день!" class="whatsapp"  target="_blank" ></a>
             <a href="viber://add?number=79161457988" class="viber"  target="_blank" ></a>
             <a href='tg://resolve?domain="PRIMEDC"' class="telegram"  target="_blank" ></a>
         </div>
-        <a href="tel:<%= @phone.html_safe if @phone%>" class="phone">
-          <%= @phone.html_safe if @phone%>
-          <span>горячая линия</span>
-        </a>
         <div id="location" class="location">
           <div class="city">г. Липецк</div>
           <span><%= @place.html_safe if @place %></span>

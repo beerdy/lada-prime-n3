@@ -6,6 +6,8 @@ Disallow: *calltouch_tm=
 Disallow: /?calltouch_tm=*
 Disallow: /admin
 Disallow: /parsers
+Disallow: /*?utm_source=
+Disallow: *utm*=
 
 Host: lada-prime.ru
 Sitemap: http://lada-prime.ru/sitemap.xml

@@ -2491,8 +2491,17 @@ footer{
 	    height: 200px;
 	}
 	.connect{
-		display: none;
+		width: 100%;
+		margin:0;
+		padding:30px 0 0 0;
 	}
+		.connect a{
+			width: 30%;
+			height:45px;
+			margin:0;
+			background-size: 45px;
+		}
+
 	.slave-info {
 	    float: none;
 	    width: 100%;
