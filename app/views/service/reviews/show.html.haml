@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @service_review.title
+%p
+  %b Description:
+  = @service_review.description
+%p
+  %b Slave:
+  = @service_review.slave
+%p
+  %b Link:
+  = @service_review.link
+%p
+  %b Url:
+  = @service_review.url
+%p
+  %b Sort:
+  = @service_review.sort
+%p
+  %b Show:
+  = @service_review.show
+
+= link_to 'Edit', edit_service_review_path(@service_review)
+\|
+= link_to 'Back', service_reviews_path

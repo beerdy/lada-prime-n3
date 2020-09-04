@@ -52,7 +52,7 @@
       .info-price
         = number_to_currency(@complectation.price_new, precision: 0, unit: "") 
         ₽
-      %a.buttonA.popupOpen{:onclick => "return false;"} Получить предложение
+      %a.buttonA.popupOpen{:href => "https://prime.lada.ru/ds/form_carord.php", :target => '_blank'} Получить предложение
       %a.buttonB{:href => "#"} 
         в Кредит от 
         = number_to_currency(@complectation.credit_day, precision: 0, unit: "") 
@@ -87,6 +87,6 @@
         Определились с выбором? Отлично! Тогда отправляйте online-заявку на тест-драйв, расчет кредита или
         покупку
         = @complectation.modification.name 
-      %a.buttonA.drive{:href => "https://prime.lada.ru/ds/test-drive/", :target => 'blank_' } ТЕС-ДРАЙВ
-      %a.buttonA.calc{:href => "https://prime.lada.ru/ds/form_credit.php", :target => 'blank_' }  Расчитать кредит
+      %a.buttonA.drive{:href => "https://prime.lada.ru/ds/test-drive/", :target => 'blank_' } ТЕСТ-ДРАЙВ
+      %a.buttonA.calc{:href => "https://prime.lada.ru/ds/form_credit.php", :target => 'blank_' }  Рассчитать кредит
       %a.buttonA.price{:href => "https://prime.lada.ru/ds/cars/#{@complectation.modification.model.url}/#{@complectation.modification.anchor_name}/print_prices.pdf", :target => 'blank_'} Прайс-лист

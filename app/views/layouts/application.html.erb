@@ -16,7 +16,7 @@
     <script type="text/javascript">
       window.slideCount = <%= @sliders.count %>;
     </script>
-    <header class="header animated fadeInDown">
+    <header class="header">
       <div class="contentpage_box">
         <a href="/" class="logoBlock"></a>
         <a href="tel:<%= @phone.html_safe if @phone%>" class="phone">
@@ -67,17 +67,7 @@
         <a class="bigMenu_list" href="#contacts" onclick="pageTo('contacts');">Контакты</a>
     </div>
 
-    <div class="popupBg" onclick="return popupOff();">
-      <div class="popup">
-        <div class="popupClose"></div>
-        <h2>Обратная связь</h2>
-        <p>Задайте свой вопрос или просто оставьте номер телефона и с Вами обязательно свяжутся!</p>
-        <input placeholder="Ваше Имя" />
-        <input placeholder="+7 (___) ___ - __ - __" />
-        <input placeholder="Вопрос" />
-        <a href="" class="buttonA">Отправить</a>
-      </div>
-    </div>
+    <%= render 'messages/form' %>
 
   </body>
 </html>

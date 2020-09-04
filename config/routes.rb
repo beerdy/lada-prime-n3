@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-
-  resources :engines
-  resources :specifications
-  get 'modification_images/show'
+  namespace :service do
+    resources :reviews
+  end
+  namespace :service do
+    resources :sales
+  end
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
+  
   get  'main/index'
+  get  'modification_images/show'
   get  'maps', to: 'main#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -38,6 +42,18 @@ Rails.application.routes.draw do
 
   resources :cars, only: [:show, :index]
 
+  namespace :service do
+    root 'main#index'
+    get 'main/index'
+
+    resources :jobs do
+      resources :works
+    end
+    resources :works
+  end
+  
+  # resources :engines
+  # resources :specifications
   # resources :properties
   # resources :projects
   # resources :galleries

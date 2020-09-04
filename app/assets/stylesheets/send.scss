@@ -1,0 +1,18 @@
+#send-message-ok {
+  display: hide;
+  h4 {
+    color: #455A65 !important;
+  }
+}
+#send-message-error {
+  display: hide;
+  h4 {
+    color: red !important;
+  }
+}
+#send-message-wait {
+  display: hide;
+  h4 {
+    color: #F7761F !important;
+  }
+}

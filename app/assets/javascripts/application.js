@@ -59,7 +59,11 @@
 $(document).ready(function() {
 
     $('.popupOpen').on('click', function() {
-        $('.popupBg').fadeIn();
+      $('.popupBg').fadeIn();
+      $('#send-message-wait').hide();
+      $('#send-message-ok').hide();
+      $('#send-message-error').hide();
+      $('#send-message-data').show();
     });
 
     $('.popupClose').on('click', function() {

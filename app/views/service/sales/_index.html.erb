@@ -1,0 +1,19 @@
+<section class="service service-uslugi">
+  <div class="contentpage_box">
+    <h2>Акции сервиса</h2>
+
+    <div class="service-akcii-box">
+      <% Service::Sale.all.each_with_index do |sale,index| %>
+      <a href="<%= '/service/sales/'+sale.id.to_s %>" class="akcii-iteam">
+        <div class="numberr"><%=index+1 %></div>
+        <h3><%=sale.title %></h3>
+        <img src="<%= sale.image.url if sale.image %>"/>
+        <span class="plus"><%=sale.slave %></span>
+        <span class="date"><%=sale.link %></span>
+        <div class="buttonA">Подробнее</div>
+      </a>
+       <% end %>
+    </div>
+
+  </div>
+</section>

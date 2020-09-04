@@ -1,4 +1,4 @@
-<section id="home" class="contentpage animated fadeIn">
+<section id="home" class="contentpage">
   <div class="menuBox">
     <nav class="menu">
       <% @models.each do |model| %>
@@ -97,7 +97,7 @@
                       <div class="seconds">Сукунд <span></span></div>
                   </div>
               </div>
-              <a href="/models/<%= product.model.url %>" class="buttonA">Цены на <%= product.title %></a>
+              <a href="/models/<%= product.model.url if product.model %>" class="buttonA">Цены на <%= product.title %></a>
               <a href="<%= product.try(:link) %>" class="buttonB">Подробнее о модели</a>
           </div>
       </div>

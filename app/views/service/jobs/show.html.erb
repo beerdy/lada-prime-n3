@@ -1,0 +1,79 @@
+<header class="service-header">
+  <div class="zakladki">
+    <a href="/service">СЕРВИС</a>
+  </div>
+  <a href="#contacts" onclick="return pageTo('contacts');" class="service-leftBlock">
+    г. Липецк
+    <span>ЛЕБЕДЯНСКОЕ ШОССЕ, ВЛ. 2.</span>
+  </a>
+  <a href="/service" onclick="return pageTo('contacts');" class="service-logoBlock"></a>
+  <a href="tel:+7 920 495-55-11" class="service-rightBlock">
+    +7 920 495-55-11
+    <span>ГОРЯЧАЯ ЛИНИЯ</span>
+  </a>
+</header>
+<section id="intro" style="background:#455A65;height:140px;"></section>
+<section class="service uslugi-small">
+  <div class="contentpage_box">
+    <% @service_jobs.each do |job| %>
+      <a href="/service/jobs/<%= job.link %>" style="background-image: url('<%= job.image.url if job.image %>');" class="uslugi-small-iteam u05 <%= "selected" if @service_job.link == job.link %>"><%= job.title %></a>
+    <% end %>
+  </div>
+</section>
+<section class="service service-uslugi">
+  <div class="contentpage_box">
+    <h1><%= @service_job.title %></h1>
+    <div class="sub-uslugi-box">
+      <% @service_job.works.each do |work| %>
+      <a href="<%= '/service/jobs/'+@service_job.link+'/works/'+work.link %>" class="uslugi-iteam u0"><%= work.title %></a>
+      <% end %>
+    </div>
+    <div class="general-text">
+      <%= @service_job.description %>
+    </div>
+    <div class="general-phone">
+      Проконсультируем по любым вопросам,<br>связанными с ремонтом вашего автомобиля
+      <span>(4742) 500-777</span>
+    </section>
+  </div>
+<section class="service service-order">
+  <div class="contentpage_box">
+      <h2>Запишитесь уже сейчас!</h2>
+      <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г.</p>
+      <div style="overflow:hidden">
+        <input placeholder="Ваше имя" class="typeLine1" type="text" name="">
+        <input placeholder="+7 ___" class="typeLine2" type="text" name="">
+        <input placeholder="Какая услуга Вас интересует?" class="typeLine3" type="text" name="">
+        <input placeholder="Ваше имя" class="typeLine4" type="text" name="">
+        <input placeholder="Ваше имя" class="typeLine5" type="text" name="">
+      </div>
+        <input type="submit" class="buttonA" value="Отправить"> 
+    <small>При отправке формы Вы соглашаетесь на обработку персональных данных</small>
+  </div>
+</section>
+
+<%= render 'service/sales/index'%>
+
+<section id="contacts" class="service">
+  <div class="contentpage_box">
+      <h2>Контакты</h2>
+      <div style="overflow:hidden;margin:0 0 20px 0;">
+        <div class="phone"><%= @phone.html_safe if @phone%></div>
+        <div class="mail"><%=  @email.html_safe if @email%></div>
+        <div class="place"><%= @place.html_safe if @place%></div>
+      </div>
+      <%= @map.html_safe if Rails.env.production? %>
+  </div>
+</section>
+
+<footer>
+  <div class="txtt">
+    Все права защищены © 2006–2020, ПРАЙМ, официальный дилер LADA
+  </div>
+  <a href="/pages/vakansi">Вакансии</a>
+  <a href="/pages/politics">Политика</a>
+  <a href="#" onclick="return false;" class="popupOpen">Обратная связь</a>
+</footer>
+= link_to 'Back', service_jobs_path
+
+

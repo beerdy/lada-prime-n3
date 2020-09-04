@@ -1,0 +1,24 @@
+<%= form_with(model: @message, id: 'send-message') do |form| %>
+  <div class="popupBg">
+    <div class="popup">
+      <div class="popupClose"></div>
+      <h2>Обратная связь</h2>
+      <p>Задайте свой вопрос или просто оставьте номер телефона и с Вами обязательно свяжутся!</p>
+      <div id="send-message-data">
+      <%= form.text_field :name, :placeholder =>"Ваше Имя" %>
+      <%= form.text_field :phone, :placeholder =>"+7 (999) 999 - 99 - 99"  %>
+      <%= form.text_field :description, :placeholder =>"Ваш вопрос" %>
+      <%= form.submit 'Отправить', :class => 'buttonA', :id => 'send-button' %>
+      </div>
+      <div id="send-message-ok">
+        <h4>СООБЩЕНИЕ УСПЕШНО ОТПРАВЛЕНО!</h4>
+      </div>
+      <div id="send-message-error">
+        <h4>ПРОИЗОШЛА ОШИБКА.</h4>
+      </div>
+      <div id="send-message-wait">
+        <h4>ОТПРАВЛЯЕМ, ЖДИТЕ..</h4>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+%h1 Listing service_reviews
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Slave
+      %th Link
+      %th Url
+      %th Sort
+      %th Show
+      %th
+      %th
+      %th
+
+  %tbody
+    - @service_reviews.each do |service_review|
+      %tr
+        %td= service_review.title
+        %td= service_review.description
+        %td= service_review.slave
+        %td= service_review.link
+        %td= service_review.url
+        %td= service_review.sort
+        %td= service_review.show
+        %td= link_to 'Show', service_review
+        %td= link_to 'Edit', edit_service_review_path(service_review)
+        %td= link_to 'Destroy', service_review, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Review', new_service_review_path

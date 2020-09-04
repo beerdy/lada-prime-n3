@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   
   def initialize
     super
+    
+    @message = Message.new
 
     Content.all.each do |content|
       @head      = content if content.url == 'head'

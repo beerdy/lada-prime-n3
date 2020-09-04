@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_161718) do
+ActiveRecord::Schema.define(version: 2020_09_02_114053) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -253,6 +253,72 @@ ActiveRecord::Schema.define(version: 2020_07_30_161718) do
     t.string "gallery_content_type"
     t.integer "gallery_file_size"
     t.datetime "gallery_updated_at"
+  end
+
+  create_table "service_jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "service_reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "service_sales", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.string "preview_file_name"
+    t.string "preview_content_type"
+    t.integer "preview_file_size"
+    t.datetime "preview_updated_at"
+  end
+
+  create_table "service_works", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "service_job_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["service_job_id"], name: "index_service_works_on_service_job_id"
   end
 
   create_table "sliders", force: :cascade do |t|
