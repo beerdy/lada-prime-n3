@@ -25,6 +25,13 @@ header.service-header{
 	padding: 30px;
 }
 
+	.service-header-content{
+		overflow: hidden;
+		width:100%;
+		max-width: 1200px;
+		margin: auto;
+	}
+
 	header.service-header.small{
 		position: fixed;
 		overflow: hidden;

@@ -291,10 +291,32 @@ label{
 	background: #E1E1E1;
 }
 
+.line-up{
+	background-color: #455A65;
+}
+	.line-up-content{
+		max-width: 1200px;
+		margin: auto;
+		text-align: right;
+	}
+
+	.line-up-content a{
+		padding:10px 10px 10px 10px;
+		display: inline-block;
+		font-size: 12px;
+		color:#889ca6;
+	}
+	.line-up-content a:hover{
+		padding:10px 10px 10px 10px;
+		display: inline-block;
+		font-size: 12px;
+		color:#fff;
+	}
+
 header.header{
 	position: relative;
 	width:100%;
-	padding:45px 0 0 0;
+	padding:35px 0 0 0;
 	background: #fff;
 }
 
@@ -2225,6 +2247,11 @@ footer{
 	}
 
 @media screen and (max-width: 800px) {
+	
+	.line-up-content{
+		text-align: center;
+	}
+
 	h2{
 		padding:0 10px 0 10px;
 	}

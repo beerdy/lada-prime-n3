@@ -1,0 +1,10 @@
+= form_for @tradein_car do |f|
+  - if @tradein_car.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tradein_car.errors.count, "error")} prohibited this tradein_car from being saved:"
+      %ul
+        - @tradein_car.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

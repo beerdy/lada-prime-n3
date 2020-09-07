@@ -16,6 +16,15 @@
     <script type="text/javascript">
       window.slideCount = <%= @sliders.count %>;
     </script>
+    <% unless Rails.env.production? %>
+    <div class="line-up">
+      <div class="line-up-content">
+        <a href="">Новые автомобили</a>
+        <a href="">Trade-in</a>
+        <a href="">Сервис</a>
+      </div>
+    </div>
+    <% end %>
     <header class="header">
       <div class="contentpage_box">
         <a href="/" class="logoBlock"></a>

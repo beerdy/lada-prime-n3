@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :tradein do
+    resources :cars
+  end
+  namespace :tradein do
+    get 'main/index'
+  end
   namespace :service do
     resources :reviews
   end

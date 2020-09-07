@@ -79,7 +79,7 @@
 
 <section id="super" class="contentpage">
     <% @products.each_with_index do |product,i| %>
-    <div class="superPuper slide<%=i+1%>" style="background-image:linear-gradient(270deg, rgba(76, 97, 107, 0.8) 0.01%, rgba(76, 97, 107, 0) 97.71%), url(<%= product.gallery.url %>);" time="<%= product.finish %> 20:00:00 GMT+03:00">
+    <div class="superPuper slide<%=i+1%>" style="background-image:linear-gradient(270deg, rgba(76, 97, 107, 0.8) 0.01%, rgba(76, 97, 107, 0) 97.71%), url(<%= product.gallery.url %>);" time="<%= "#{product.finish.month} #{product.finish.day} #{product.finish.year}" %> 20:00:00 GMT+03:00">
       <div class="contentpage_box">
         <div class="right">
             <h2><%= product.title %></h2>
@@ -94,7 +94,7 @@
                       <div class="days">Дней <span></span></div>
                       <div class="hours">Часов <span></span></div>
                       <div class="minutes">Минут <span></span></div>
-                      <div class="seconds">Сукунд <span></span></div>
+                      <div class="seconds">Секунд <span></span></div>
                   </div>
               </div>
               <a href="/models/<%= product.model.url if product.model %>" class="buttonA">Цены на <%= product.title %></a>

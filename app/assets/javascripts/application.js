@@ -77,11 +77,14 @@ $(document).ready(function() {
     });
 
   function getTimeRemaining(endtime){
+    console.log(endtime);
     var t = Date.parse(endtime) - Date.parse(new Date());
+    console.log(new Date());
     var seconds = Math.floor( (t/1000) % 60 );
     var minutes = Math.floor( (t/1000/60) % 60 );
     var hours = Math.floor( (t/(1000*60*60)) % 24 );
     var days = Math.floor( t/(1000*60*60*24) );
+
     return {
      'total': t,
      'days': days,
@@ -89,6 +92,7 @@ $(document).ready(function() {
      'minutes': minutes,
      'seconds': seconds
     };
+
   }
 
   function initializeClock(endtime, obj){
@@ -96,6 +100,7 @@ $(document).ready(function() {
 
       function updateClock(obj){
         var t = getTimeRemaining(endtime);
+       
         $(obj).find('.countdown .days span').html(t.days);
         $(obj).find('.countdown .hours span').html(t.hours);
         $(obj).find('.countdown .minutes span').html(t.minutes);
@@ -106,7 +111,7 @@ $(document).ready(function() {
     }
 
     updateClock(obj); // запустите функцию один раз, чтобы избежать задержки
-    var timeinterval = setInterval(updateClock,1000, obj);
+    var timeinterval = setInterval(updateClock, 1000, obj);
   }
   if($('.kuzov').length){
     var url_string = window.location.href.split('/');

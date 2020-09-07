@@ -1,0 +1,19 @@
+%h1 Listing tradein_cars
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tradein_cars.each do |tradein_car|
+      %tr
+        %td= link_to 'Show', tradein_car
+        %td= link_to 'Edit', edit_tradein_car_path(tradein_car)
+        %td= link_to 'Destroy', tradein_car, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Car', new_tradein_car_path
