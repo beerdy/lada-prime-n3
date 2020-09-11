@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  namespace :tradein do
-    resources :cars
-  end
-  namespace :tradein do
-    get 'main/index'
-  end
-  namespace :service do
-    resources :reviews
-  end
-  namespace :service do
-    resources :sales
-  end
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
@@ -27,7 +15,6 @@ Rails.application.routes.draw do
   resources :messages
   resources :pages, only: [:show]
   resources :complectations, only: [:show]
-
   resources :models do
     resources :modifications
   end
@@ -46,8 +33,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cars, only: [:show, :index]
-
   namespace :service do
     root 'main#index'
     get 'main/index'
@@ -56,8 +41,17 @@ Rails.application.routes.draw do
       resources :works
     end
     resources :works
+    resources :sales
+    resources :reviews
   end
-  
+
+  namespace :tradein do
+    root 'main#index'
+    get 'main/index'
+    
+    resources :cars
+  end
+
   # resources :engines
   # resources :specifications
   # resources :properties
@@ -66,5 +60,6 @@ Rails.application.routes.draw do
   # resources :contents
   # resources :products
   # resources :sliders
+  # resources :cars, only: [:show, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

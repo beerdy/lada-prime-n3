@@ -28,7 +28,7 @@
     <header class="header">
       <div class="contentpage_box">
         <a href="/" class="logoBlock"></a>
-        <a href="tel:<%= @phone.html_safe if @phone%>" class="phone">
+        <a href="tel:+7 <%= @phone.html_safe if @phone%>" class="phone">
           <%= @phone.html_safe if @phone%>
           <span>горячая линия</span>
         </a>
