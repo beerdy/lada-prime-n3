@@ -1,0 +1,39 @@
+%h1 Listing service_writes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Phone
+      %th Model
+      %th Year
+      %th Work
+      %th Mileage
+      %th Link
+      %th Url
+      %th Sort
+      %th Show
+      %th
+      %th
+      %th
+
+  %tbody
+    - @service_writes.each do |service_write|
+      %tr
+        %td= service_write.name
+        %td= service_write.phone
+        %td= service_write.model
+        %td= service_write.year
+        %td= service_write.work
+        %td= service_write.mileage
+        %td= service_write.link
+        %td= service_write.url
+        %td= service_write.sort
+        %td= service_write.show
+        %td= link_to 'Show', service_write
+        %td= link_to 'Edit', edit_service_write_path(service_write)
+        %td= link_to 'Destroy', service_write, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Write', new_service_write_path

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @service_whatwedo.title
+%p
+  %b Description:
+  = @service_whatwedo.description
+%p
+  %b Slave:
+  = @service_whatwedo.slave
+%p
+  %b Link:
+  = @service_whatwedo.link
+%p
+  %b Url:
+  = @service_whatwedo.url
+%p
+  %b Sort:
+  = @service_whatwedo.sort
+%p
+  %b Show:
+  = @service_whatwedo.show
+
+= link_to 'Edit', edit_service_whatwedo_path(@service_whatwedo)
+\|
+= link_to 'Back', service_whatwedos_path

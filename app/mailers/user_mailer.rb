@@ -10,4 +10,9 @@ class UserMailer < ApplicationMailer
     @message = message
     mail(to: 'info@lada-prime.ru,l.raikova@lada-prime.ru,a.grishin@lada-prime.ru', subject: "Сообщение с сайта Lada-Prime.ru <site@lada-prime.ru>" )
   end
+  
+  def write_email(message)
+    @message = message
+    mail(to: 'info@lada-prime.ru,l.raikova@lada-prime.ru,a.grishin@lada-prime.ru', subject: "Сообщение с сайта Lada-Prime.ru <site@lada-prime.ru>" )
+  end
 end

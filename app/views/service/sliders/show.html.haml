@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @service_slider.title
+%p
+  %b Description:
+  = @service_slider.description
+%p
+  %b Slave:
+  = @service_slider.slave
+%p
+  %b Link:
+  = @service_slider.link
+%p
+  %b Url:
+  = @service_slider.url
+%p
+  %b Sort:
+  = @service_slider.sort
+%p
+  %b Show:
+  = @service_slider.show
+
+= link_to 'Edit', edit_service_slider_path(@service_slider)
+\|
+= link_to 'Back', service_sliders_path

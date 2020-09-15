@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @service_write.name
+%p
+  %b Phone:
+  = @service_write.phone
+%p
+  %b Model:
+  = @service_write.model
+%p
+  %b Year:
+  = @service_write.year
+%p
+  %b Work:
+  = @service_write.work
+%p
+  %b Mileage:
+  = @service_write.mileage
+%p
+  %b Link:
+  = @service_write.link
+%p
+  %b Url:
+  = @service_write.url
+%p
+  %b Sort:
+  = @service_write.sort
+%p
+  %b Show:
+  = @service_write.show
+
+= link_to 'Edit', edit_service_write_path(@service_write)
+\|
+= link_to 'Back', service_writes_path

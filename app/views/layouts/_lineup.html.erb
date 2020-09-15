@@ -1,0 +1,8 @@
+<div class="line-up">
+  <div class="line-up-content">
+    <%= "curr: #{@current_section}" %>
+    <a href="/" class="current-section <%= @current_section=='new-cars' ? 'yes' : '' %>" title="Новые автомобили ЛАДА в Липецке">Новые автомобили</a>
+    <!-- <a href="/tradein" class="current-section <%= @current_section=='old-cars' ? 'yes' : '' %>" title="Авто с пробегом в Липецке">Авто с пробегом</a> -->
+    <a href="/service" class="current-section <%= @current_section=='srv-cars' ? 'yes' : '' %>" title="Автосервис ЛАДА в Липецке">Автосервис</a>
+  </div>
+</div>

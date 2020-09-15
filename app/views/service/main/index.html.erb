@@ -1,65 +1,4 @@
-<script>
-var slideNow = 1;
-var slideCount = $('.mr-slider-wrapper').children().length;
-var slideInterval = 5000;
-var navBtnId = 0;
-var translateWidth = 0;
-
-$(document).ready(function() {
-
-    var switchInterval = setInterval(nextSlide1, slideInterval);
-
-    $('#intro').hover(function() {
-        clearInterval(switchInterval);
-    }, function() {
-        switchInterval = setInterval(nextSlide, slideInterval);
-    });
-
-
-});
-
-function nextSlide1() {
-    if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) {
-        slideNow = 1;
-    } else {
-        slideNow++;
-    }
-    getSlide(slideNow);
-}
-
-function prevSlide1() {
-    if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) {
-        slideNow = slideCount;
-    } else {
-        slideNow--;
-    }
-    getSlide2(slideNow);
-}
-
-function getSlide(slideNow) {
-    $('.mr-slider-wrapper .mr-slider-slide').removeClass('selected');
-    $('.mr-slider-wrapper .mr-slider-slide').removeClass('unselected');
-    var li = $('.mr-slider-wrapper .mr-slider-slide:first-child').addClass('selected'); // parent of the button
-    li.insertAfter('.mr-slider-wrapper > .mr-slider-slide:last-child');
-    console.log();
-}
-
-function getSlide2(slideNow) {
-    $('.mr-slider-wrapper .mr-slider-slide').removeClass('selected');
-    $('.mr-slider-wrapper .mr-slider-slide').removeClass('unselected');
-    var li = $('.mr-slider-wrapper .mr-slider-slide:last-child').addClass('unselected'); // parent of the button
-    li.insertBefore('.mr-slider-wrapper > .mr-slider-slide:first-child');
-    console.log();
-}
-
-</script>
-<div class="line-up">
-  <div class="line-up-content">
-    <a href="">Модельный ряд</a>
-    <a href="">Trade-in</a>
-    <a href="">Сервис</a>
-  </div>
-</div>
+<%= render 'layouts/lineup' %>
 <header class="service-header">
   <div class="service-header-content">
   <div class="zakladki">
@@ -76,40 +15,36 @@ function getSlide2(slideNow) {
 	</a>
   </div>
 </header>
+
 <section id="intro">
 	<div class="mr-slider">
         <div class="mr-slider-wrapper">
-           	<div id="01" class="mr-slider-slide" style="background-image: url(https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);">
+          <% Service::Slider.all.each do |slide| %>
+           	<div class="mr-slider-slide" style="background-image: url('<%= slide.image.url %>');">
+              <% if slide.slave != '0' %>
+                <div class="VideoYoutube"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1&playlist=<%= slide.slave %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
+              <% end %>
             	<div class="mr-slider-text">
-            		<div class="mr-slider-text-header">Замена масла ДВС 290</div>
-            		<div class="mr-slider-text-p">
-            			Cтандарт качества обслуживания клиентов
-            		</div>
-            	</div>
+            		<div class="mr-slider-text-header"><%=slide.title %></div>
+            		<div class="mr-slider-text-p"><%=slide.description %></div>
+              </div>
+              <div class="mr-slider-bat">      
+                  <a href="<%=slide.url %>" target="_blank" class="buttonA"><%=slide.link %></a>
+                  <div class="buttonB"><span>записаться через</span></div>
+                  <div class="socials">
+                    <a href="https://vk.com/lipetskprime" class="vk" target="_blank"></a>
+                    <a href="https://www.instagram.com/prime_lipetsk" target="_blank" class="insta"></a>
+                    <a href="https://www.youtube.com/channel/UCNusqHRWAdF75CUioreV8HQ" class="youtube" target="_blank"></a>
+                    <a href="https://www.facebook.com/lipetskprime" class="fb" target="_blank"></a>
+                    <a href="https://ok.ru/lipetskprime" class="ok" target="_blank"></a>
+                  </div>
+                </div>
             </div>
-           	<div id="01" class="mr-slider-slide" style="background-image: url(https://images.unsplash.com/photo-1593642532973-d31b6557fa68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);">
-            	<div class="mr-slider-text">
-            		<div class="mr-slider-text-header">Другой слайд</div>
-            		<div class="mr-slider-text-p">
-            			Ла ла ла
-            		</div>
-            	</div>
-            </div>
+          <% end %>
         </div>
         <div class="mr-slider-btns">
             <div class="prev-btn" onclick="return prevSlide1();"></div>
             <div class="next-btn" onclick="return nextSlide1();"></div>
-        </div>
-        <div class="mr-slider-bat">      
-    		<a href="https://prime.lada.ru/ds/cars/" class="buttonA">ОСТАВИТЬ ЗАЯВКУ</a>
-            <div class="buttonB"><span>записаться через</span>
-            <div class="socials">
-              <a href="https://vk.com/lipetskprime" class="vk" target="_blank"></a>
-              <a href="https://www.instagram.com/prime_lipetsk" target="_blank" class="insta"></a>
-              <a href="https://www.youtube.com/channel/UCNusqHRWAdF75CUioreV8HQ" class="youtube" target="_blank"></a>
-              <a href="https://www.facebook.com/lipetskprime" class="fb" target="_blank"></a>
-              <a href="https://ok.ru/lipetskprime" class="ok" target="_blank"></a>
-            </div>
         </div>
 	</div>
 </section>
@@ -138,11 +73,8 @@ function getSlide2(slideNow) {
 
 <section class="service service-uslugi">
   <div class="contentpage_box">
-    <h2>Услуги</h2>
+    <h2>Автосервис "ПРАЙМ"</h2>
     <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. LADA – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
-
-
-
 
     <!--<div class="uslugi-box">
       <a href="" class="uslugi-iteam u01">Техническое обслуживание</a>
@@ -155,46 +87,7 @@ function getSlide2(slideNow) {
   </div>
 </section>
 
-<section class="service service-order">
-  <div class="contentpage_box">
-      <h2>Запишитесь уже сейчас!</h2>
-      <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г.</p>
-        <input placeholder="Ваше имя" class="typeLine" type="text" name="">
-        <input placeholder="+7 ___" class="typeLine" type="text" name="">
-        <select class="typeLine">
-          <option disabled>Выберите модель</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-        </select>
-        <input placeholder="Год выпуска" class="typeLine" type="text" name="">
-        <input placeholder="Пробег" class="typeLine" type="text" name="">
-          <select class="typeLine">
-          <option disabled>Выберите работы</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-          <option>LADA</option>
-        </select>
-        <input type="submit" class="buttonA" value="Отправить"> 
-    <small>При отправке формы Вы соглашаетесь на обработку персональных данных</small>
-  </div>
-</section>
-
-
+<%= render 'service/main/order' %>
 
 <section class="service service-reports">
   <div class="contentpage_box">
@@ -203,14 +96,13 @@ function getSlide2(slideNow) {
     <div class="reports-box">
 
        <% Service::Review.all.each do |review| %>
-        <a href="<%= '/service/sales/'+review.id.to_s %>" class="report-iteam u01">
+        <a href=" <%=review.link %>" terget="_blank" class="report-iteam u01">
           <%=review.description %>
-
           <div class="user">
           <div class="user-photo"><img src="<%= review.image.url if review.image %>"/></div>
           <div class="user-name">
               <%=review.title %>
-              <span>Замена масла</span>
+              <span><%=review.slave %></span>
             </div>
           </div>
 

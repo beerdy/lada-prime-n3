@@ -1,0 +1,40 @@
+= form_for @service_write do |f|
+  - if @service_write.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@service_write.errors.count, "error")} prohibited this service_write from being saved:"
+      %ul
+        - @service_write.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :model
+    = f.text_field :model
+  .field
+    = f.label :year
+    = f.text_field :year
+  .field
+    = f.label :work
+    = f.text_field :work
+  .field
+    = f.label :mileage
+    = f.text_field :mileage
+  .field
+    = f.label :link
+    = f.text_field :link
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :sort
+    = f.number_field :sort
+  .field
+    = f.label :show
+    = f.check_box :show
+  .actions
+    = f.submit 'Save'

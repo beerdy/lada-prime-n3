@@ -1,0 +1,28 @@
+<section class="service service-order">
+  <div class="contentpage_box">
+      <h2>Запишитесь уже сейчас!</h2>
+      <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г.</p>
+      <%= form_with model: @service_write, :html => { :onsubmit => "OrderSand(this)" } do |f| %>
+        <input placeholder="Ваше имя" class="typeLine" type="text" name="service_write[name]">
+        <input placeholder="+7 ___" class="typeLine" type="text" name="service_write[phone]">
+        <select class="typeLine" name="service_write[model]">
+          <option disabled>Выберите модель</option>
+          <% Product.all.each do |product|%>
+          <option><%= product.title %></option>
+          <% end %>
+          <option>Другая</option>
+        </select>
+        <input placeholder="Год выпуска" class="typeLine" type="text" name="service_write[year]">
+        <input placeholder="Пробег" class="typeLine" type="text" name="service_write[mileage]">
+        <select class="typeLine" name="service_write[work]">
+          <option disabled>Выберите работы</option>
+          <% Service::Whatwedo.all.each do |work| %>
+          <option><%= work.title %></option>
+          <% end %>
+          <option>Другой</option>
+        </select>
+        <%= f.submit 'Отправить', :class => "buttonA"  %>
+      <% end %>
+    <small>При отправке формы Вы соглашаетесь на обработку персональных данных</small>
+  </div>
+</section>

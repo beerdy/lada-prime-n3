@@ -225,6 +225,24 @@ label{
 	background: #f7761f;
 }
 
+.buttonA.process{
+	background: #f7761f;
+}
+
+.buttonA.sended{
+	background: #455a65;
+}
+
+.buttonA.error{
+	background: #830000;
+}
+
+.current-section {
+	text-transform: uppercase;
+	&.yes {
+		color: #fff;
+	}
+}
 .buttonA:hover, .wpcf7-submit:hover{
 	background: #B95A00;
 }
@@ -292,6 +310,7 @@ label{
 }
 
 .line-up{
+	// position: fixed;
 	background-color: #455A65;
 }
 	.line-up-content{

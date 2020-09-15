@@ -1,0 +1,33 @@
+%h1 Listing service_whatwedos
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Slave
+      %th Link
+      %th Url
+      %th Sort
+      %th Show
+      %th
+      %th
+      %th
+
+  %tbody
+    - @service_whatwedos.each do |service_whatwedo|
+      %tr
+        %td= service_whatwedo.title
+        %td= service_whatwedo.description
+        %td= service_whatwedo.slave
+        %td= service_whatwedo.link
+        %td= service_whatwedo.url
+        %td= service_whatwedo.sort
+        %td= service_whatwedo.show
+        %td= link_to 'Show', service_whatwedo
+        %td= link_to 'Edit', edit_service_whatwedo_path(service_whatwedo)
+        %td= link_to 'Destroy', service_whatwedo, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Whatwedo', new_service_whatwedo_path

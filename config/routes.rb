@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     resources :works
     resources :sales
     resources :reviews
+    resources :sliders
+    resources :writes
+    resources :whatwedos
   end
 
   namespace :tradein do
@@ -62,4 +65,8 @@ Rails.application.routes.draw do
   # resources :sliders
   # resources :cars, only: [:show, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # ЗаглушкИ для несуществующих routes. К примеру картинок подгружаемых библиотеками JS
+  get '/galleries/original/missing.png', controller: 'main',  action: 'missing', :defaults => { :format => 'json' } 
+  get '/images/original/missing.png', controller: 'main',  action: 'missing', :defaults => { :format => 'json' } 
 end

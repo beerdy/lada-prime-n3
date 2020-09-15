@@ -17,7 +17,6 @@
 // require turbolinks
 //= require_tree .
 // document.addEventListener("turbolinks:load", function(){
-
  
   function getURLVar(key) {
     var query = String(document.location.href).split('?');
@@ -57,7 +56,6 @@
   }
   
 $(document).ready(function() {
-
     $('.popupOpen').on('click', function() {
       $('.popupBg').fadeIn();
       $('#send-message-wait').hide();

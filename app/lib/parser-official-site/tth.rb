@@ -69,11 +69,10 @@ module ParserOfficialSite
       @domain  = domain
     end
 
-    def parse
+    def parse tth_type=Object.new
       data = get_content
 
       tth_types = []
-      tth_type = Object.new
       data.css('.tth_types').css('li').each do |li|
         cls = li.attributes["class"].try(:value)
         if cls == 'first'

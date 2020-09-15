@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery with: :exception
   before_action :code_watcher
-  
+  before_action :set_current_section
+
   def initialize
     super
-    
     @message = Message.new
 
     Content.all.each do |content|
@@ -29,6 +29,18 @@ class ApplicationController < ActionController::Base
   end
 
   private
+    def set_current_section
+      uris = ['','']
+      uris = request.env['PATH_INFO'].split '/'
+
+      if uris[1] == 'service'
+        @current_section = 'srv-cars'
+      elsif uris[1] == 'tradein'
+        @current_section = 'old-cars'
+      else
+        @current_section = 'new-cars'
+      end
+    end
     # Dynamic refresh code 
     # in development mode
     def code_watcher

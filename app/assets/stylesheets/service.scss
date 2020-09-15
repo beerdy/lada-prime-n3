@@ -681,7 +681,8 @@ section.service-order.white{
 
 	.typeLine{
 		width:50% !important;
-		margin:10px 0 10px 0 !important
+		margin:10px 0 10px 0 !important;
+		float:left;
 	}
 
 	.service-order input.buttonA{
@@ -845,7 +846,8 @@ section.service-reports{
 				width:60px;
 				height:60px;
 				border-radius: 30px;
-				background: #000;
+				background: #555;
+				overflow: hidden;
 			}
 			.user .user-name{
 				float:left;

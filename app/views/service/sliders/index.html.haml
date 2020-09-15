@@ -1,0 +1,33 @@
+%h1 Listing service_sliders
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Slave
+      %th Link
+      %th Url
+      %th Sort
+      %th Show
+      %th
+      %th
+      %th
+
+  %tbody
+    - @service_sliders.each do |service_slider|
+      %tr
+        %td= service_slider.title
+        %td= service_slider.description
+        %td= service_slider.slave
+        %td= service_slider.link
+        %td= service_slider.url
+        %td= service_slider.sort
+        %td= service_slider.show
+        %td= link_to 'Show', service_slider
+        %td= link_to 'Edit', edit_service_slider_path(service_slider)
+        %td= link_to 'Destroy', service_slider, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Slider', new_service_slider_path

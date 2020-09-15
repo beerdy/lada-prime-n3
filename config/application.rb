@@ -16,7 +16,8 @@ module LadaPrime
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.action_controller.allow_forgery_protection = false
+    
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'lada-prime.ru','lada-prime.ru:80','lada-prime.ru:443','www.lada-prime.ru','www.lada-prime.ru:80','www.lada-prime.ru:443'
