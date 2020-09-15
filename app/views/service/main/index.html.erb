@@ -99,7 +99,11 @@
         <a href=" <%=review.link %>" terget="_blank" class="report-iteam u01">
           <%=review.description %>
           <div class="user">
-          <div class="user-photo"><img src="<%= review.image.url if review.image %>"/></div>
+          <% if review.image.try(:url) != '/images/original/missing.png'  %>
+            <div class="user-photo"><img src="<%= review.image.url %>"/></div>
+          <% else %>
+            <div class="user-photo"><img src="<%= asset_path 'no_avatar.jpg' %>"/></div>
+          <% end %>
           <div class="user-name">
               <%=review.title %>
               <span><%=review.slave %></span>
