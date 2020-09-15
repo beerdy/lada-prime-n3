@@ -21,9 +21,9 @@
         <div class="mr-slider-wrapper">
           <% Service::Slider.all.each do |slide| %>
            	<div class="mr-slider-slide" style="background-image: url('<%= slide.image.url %>');">
-              <% if slide.slave != '0' %>
+              <% unless slide.slave == ''  %>
                 <div class="VideoYoutube"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1&playlist=<%= slide.slave %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
-              <% end %>
+              <% end unless slide.slave.nil? %>
             	<div class="mr-slider-text">
             		<div class="mr-slider-text-header"><%=slide.title %></div>
             		<div class="mr-slider-text-p"><%=slide.description %></div>
@@ -74,7 +74,7 @@
 <section class="service service-uslugi">
   <div class="contentpage_box">
     <h2>Автосервис "ПРАЙМ"</h2>
-    <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. LADA – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
+    <p>Автосалон ПРАЙМ – официальный дилер ЛАДА в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. ЛАДА – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
 
     <!--<div class="uslugi-box">
       <a href="" class="uslugi-iteam u01">Техническое обслуживание</a>
@@ -92,7 +92,7 @@
 <section class="service service-reports">
   <div class="contentpage_box">
     <h2>Отзывы</h2>
-    <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. LADA – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
+    <p>Автосалон ПРАЙМ – официальный дилер ЛАДА в Липецке с декабря 2014 г. За это время ПРАЙМ занял лидирующее место среди автосалонов г. Липецк. ЛАДА – это значит ПРАЙМ! А ПРАЙМ – это стандарт качества обслуживания клиентов, высокий уровень сервиса автомобилей и широкий набор услуг.</p>
     <div class="reports-box">
 
        <% Service::Review.all.each do |review| %>
@@ -130,7 +130,7 @@
 
     <footer>
       <div class="txtt">
-        Все права защищены © 2006–2020, ПРАЙМ, официальный дилер LADA
+        Все права защищены © 2014–<%= Time.now.year %>, ПРАЙМ, официальный дилер ЛАДА
       </div>
       <a href="/pages/vakansi">Вакансии</a>
       <a href="/pages/politics">Политика</a>

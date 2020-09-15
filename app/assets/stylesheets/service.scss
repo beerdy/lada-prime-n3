@@ -1,5 +1,5 @@
-.service{
-	padding:70px 0 70px;
+.service {
+	padding: 70px 0 70px;
 }
 
 .service h1{
@@ -106,7 +106,7 @@ header.service-header{
 		float:left;
 		color:#fff;
 		text-align: left;
-		background:url('location.svg') no-repeat left center;
+		background:image-url('location.svg') no-repeat left center;
 		padding-left:50px;
 		width: 33%;
 	}
@@ -121,7 +121,7 @@ header.service-header{
 		float:right;
 		color:#fff;
 		text-align: right;
-		background:url('phone.svg') no-repeat right center;
+		background:image-url('phone.svg') no-repeat right center;
 		padding-right:50px;
 		width: 33%;
 	}
@@ -130,7 +130,7 @@ header.service-header{
 		display: block;
 		width: 34%;
 		height:88px;
-		background:url('logo-white.svg') no-repeat top center;
+		background:image-url('logo-white.svg') no-repeat top center;
 		margin: 0 auto 0px;
 		float:left;
 		margin-top:10px;
@@ -414,12 +414,12 @@ section#intro{
 
 				.prev-btn {
 				    left: 20px;
-				    background-image:url('arrow-left.svg');
+				    background-image:image-url('arrow-left.svg');
 				}
 
 				.next-btn {
 				    right: 20px;
-				    background-image:url('arrow-right.svg');
+				    background-image:image-url('arrow-right.svg');
 				}
 
 		.mr-slider-bat{
@@ -458,16 +458,16 @@ section.utp{
 	}
 
 		.utp-iteam.utp01{
-			background-image:url('service/utp-01.svg');
+			background-image:image-url('service/utp-01.svg');
 		}
 		.utp-iteam.utp02{
-			background-image:url('service/utp-02.svg');
+			background-image:image-url('service/utp-02.svg');
 		}
 		.utp-iteam.utp03{
-			background-image:url('service/utp-03.svg');
+			background-image:image-url('service/utp-03.svg');
 		}
 		.utp-iteam.utp04{
-			background-image:url('service/utp-04.svg');
+			background-image:image-url('service/utp-04.svg');
 		}
 
 section.service-usligi{
@@ -490,26 +490,26 @@ section.service-usligi{
 			line-height: 50px;
 			text-align: center;
 			color: #FFFFFF;
-			background-image:url('service/us-01.svg');
+			background-image:image-url('service/us-01.svg');
 			background-position: top 80px center;
 			background-repeat: no-repeat;
 			background-size: 128px 128px;
 			padding-top:250px;
 		}
 			.uslugi-box .uslugi-iteam.u01{
-				background-image:url('service/us-01.svg');
+				background-image:image-url('service/us-01.svg');
 			}
 			.uslugi-box .uslugi-iteam.u02{
-				background-image:url('service/us-02.svg');
+				background-image:image-url('service/us-02.svg');
 			}
 			.uslugi-box .uslugi-iteam.u03{
-				background-image:url('service/us-03.svg');
+				background-image:image-url('service/us-03.svg');
 			}
 			.uslugi-box .uslugi-iteam.u04{
-				background-image:url('service/us-04.svg');
+				background-image:image-url('service/us-04.svg');
 			}
 			.uslugi-box .uslugi-iteam.u05{
-				background-image:url('service/us-05.svg');
+				background-image:image-url('service/us-05.svg');
 			}
 
 			.uslugi-box .uslugi-iteam:hover{
@@ -605,7 +605,7 @@ section.service-usligi{
 			font-weight: bold;
 			color:#F7761F;
 			padding:10px 0 10px 0;
-			background-image:url('phone.svg');
+			background-image:image-url('phone.svg');
 			background-position: left center;
 			background-repeat: no-repeat;
 			margin:auto;
@@ -637,19 +637,19 @@ section.uslugi-small{
 			padding-top:100px;
 		}
 			.uslugi-small .uslugi-small-iteam.u01{
-				background-image:url('service/us-01.svg');
+				background-image:image-url('service/us-01.svg');
 			}
 			.uslugi-small .uslugi-small-iteam.u02{
-				background-image:url('service/us-02.svg');
+				background-image:image-url('service/us-02.svg');
 			}
 			.uslugi-small .uslugi-small-iteam.u03{
-				background-image:url('service/us-03.svg');
+				background-image:image-url('service/us-03.svg');
 			}
 			.uslugi-small .uslugi-small-iteam.u04{
-				background-image:url('service/us-04.svg');
+				background-image:image-url('service/us-04.svg');
 			}
 			.uslugi-small .uslugi-small-iteam.u05{
-				background-image:url('service/us-05.svg');
+				background-image:image-url('service/us-05.svg');
 			}
 
 			.uslugi-small .uslugi-small-iteam:hover{
@@ -663,7 +663,7 @@ section.uslugi-small{
 
 section.service-order{
 	overflow: hidden;
-	background-image:url('lala.jpg');
+	background-image:image-url('lala.jpg');
 }
 section.service-order.white{
 	overflow: hidden;
@@ -827,7 +827,7 @@ section.service-reports{
 			float:left;
 			background: #FFFFFF;
 			border: 1px solid #EFEFEF;
-			background-image:url('service/kav.svg');
+			background-image:image-url('service/kav.svg');
 			background-position: top 40px left 40px;
 			padding: 80px 40px 40px 40px;
 			background-repeat: no-repeat;
