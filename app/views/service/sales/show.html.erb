@@ -1,3 +1,8 @@
+<% @page_options = {
+  :title => @service_sale.title,
+  :description => "#{@service_sale.title} - #{@service_sale.slave}"
+} %>
+
 <%= render 'layouts/lineup' %>
 <%= render 'service/main/head' %>
 
@@ -14,11 +19,11 @@
       </div>
     </div>
     <img src="<%= @service_sale.image.url if @service_sale.image %>"/>
-      <div class="date">
+      <div class="dateBig">
       <%=@service_sale.link%>
       </div>
     <div class="general-text">
-      <%=@service_sale.description %>
+      <%=@service_sale.description.html_safe if @service_sale.description %>
     </div>
 
     <div class="general-phone">
@@ -26,7 +31,7 @@
       <span>(4742) 500-777</span>
 </section>
 
-<%= render partial: 'service/main/order', locals: { class_: 'white' } %>
+<%= render partial: 'service/main/order', locals: { class_: 'white' } %> 
 
 <section id="contacts" class="service">
   <div class="contentpage_box">

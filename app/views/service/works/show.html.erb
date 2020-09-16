@@ -1,20 +1,11 @@
+<% @page_options = {
+  :title => @service_work.title,
+  :description => 'Сервисный центр ЛИПЕЦК ЛАДА ПРАЙМ.'
+} %>
+
 <%= render 'layouts/lineup' %>
-<header class="service-header">
-  <div class="service-header-content">
-    <div class="zakladki">
-      <a href="/service">СЕРВИС</a>
-    </div>
-    <a href="#contacts" onclick="return pageTo('contacts');" class="service-leftBlock">
-      г. Липецк
-      <span>ЛЕБЕДЯНСКОЕ ШОССЕ, ВЛ. 2.</span>
-    </a>
-    <a href="/service" onclick="return pageTo('contacts');" class="service-logoBlock"></a>
-    <a href="tel:+7 920 495-55-11" class="service-rightBlock">
-      +7 920 495-55-11
-      <span>ГОРЯЧАЯ ЛИНИЯ</span>
-    </a>
-  </div>
-</header>
+<%= render 'service/main/head' %>
+
 <section id="intro" class="small"></section>
 <section class="service uslugi-small">
   <div class="contentpage_box">

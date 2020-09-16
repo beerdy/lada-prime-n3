@@ -7,7 +7,7 @@
       <a href="<%= '/service/sales/'+sale.id.to_s %>" class="akcii-iteam">
         <div class="numberr"><%=index+1 %></div>
         <h3><%=sale.title %></h3>
-        <img src="<%= sale.image.url if sale.image %>"/>
+        <img src="<%= sale.preview.url if sale.preview %>"/>
         <span class="plus"><%=sale.slave %></span>
         <span class="date"><%=sale.link %></span>
         <div class="buttonA">Подробнее</div>

@@ -576,15 +576,40 @@ section.service-usligi{
 				line-height: 40px;
 				background: #fff;
 			}
-
+		.dateBig{
+			background: #ECECEC;
+			text-align: center;
+			padding:10px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
 		.general-text{
 			display: block;
-			padding:0 10px 0 10px;
+			padding:20px 10px 0 10px;
 			font-size: 16px;
 			line-height: 24px;
-			max-width:1010px;
+			max-width:750px;
 			margin: auto;
-		}
+		}			
+			.general-text h4{
+				text-align: left;
+				font-weight: bold;
+				color:#455A65;
+				display: block;
+				font-size: 18px;
+				margin: 10px 0 10px 0;
+			}
+
+			.general-text p{
+				max-width:750px;
+				text-align: left;
+				font-weight: normal;
+			}
+
+			.general-text ul li{
+				max-width:750px;
+				list-style: disc;
+			}
 
 		.general-phone{
 			font-weight: 500;
@@ -595,6 +620,8 @@ section.service-usligi{
 			text-align: center;
 			font-weight: bold;
 			padding:50px 0 50px 0;
+			background: #ECECEC;
+			margin:40px 0 0 0;
 		}
 
 		.general-phone span{
@@ -668,6 +695,7 @@ section.uslugi-small{
 section.service-order{
 	overflow: hidden;
 	background-image:image-url('lala.jpg');
+	background-size: cover;
 }
 section.service-order.white{
 	overflow: hidden;

@@ -1,3 +1,8 @@
+<% @page_options = {
+  :title => @service_job.title,
+  :description => 'Сервисный центр ЛИПЕЦК ЛАДА ПРАЙМ.'
+} %>
+
 <%= render 'layouts/lineup' %>
 
 <%= render 'service/main/head' %>
@@ -29,7 +34,7 @@
   </div>
 </section>
 
-<%= render 'service/main/order' %>
+<%= render partial: 'service/main/order', locals: { class_: 'white' } %>
 
 <%= render 'service/sales/index'%>
 

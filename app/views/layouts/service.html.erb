@@ -5,6 +5,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application'  %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <% if @page_options %>
+      <title><%= @page_options[:title] %> | Автосервис Липецк ЛАДА ПРАЙМ. Сервис автомобилей ВАЗ премиального качества!</title>
+      <meta name="title" content="<%= @page_options[:title] %> | Автосервис Липецк ЛАДА ПРАЙМ. Сервис автомобилей ВАЗ премиального качества!">
+      <meta name="description" content="<%= @page_options[:description] %> | Автосервис ЛИПЕЦК ЛАДА ПРАЙМ от официального дилера АВТОВАЗ. Новые машины ЛАДА в наличии. Весь модельный ряд ЛАДА в автосалоне ПРАЙМ в Липецке. Телефон: +7 (4742) 500-777">
+    <%else%>
+      <title>Автосервис Липецк ЛАДА ПРАЙМ. Сервис автомобилей ВАЗ премиального качества!</title>
+      <meta name="title" content="Автосервис Липецк ЛАДА ПРАЙМ. Сервис автомобилей ВАЗ премиального качества!">
+      <meta name="description" content=" Автосервис ЛИПЕЦК ЛАДА ПРАЙМ от официального дилера АВТОВАЗ. Новые машины ЛАДА в наличии. Весь модельный ряд ЛАДА в автосалоне ПРАЙМ в Липецке. Телефон: +7 (4742) 500-777">
+    <%end%>
+    <meta name="keywords" content="автосервис, сервис, ваз, автоваз, лада, уаз, липецк лада, запчасти дешево, оригинальные запчасти">
+
   </head>
   <body>
     <%= yield %>
