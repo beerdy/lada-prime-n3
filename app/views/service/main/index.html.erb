@@ -83,9 +83,9 @@
           <%=review.description %>
           <div class="user">
           <% if review.image.try(:url) != '/images/original/missing.png'  %>
-            <div class="user-photo"><img src="<%= review.image.url %>"/></div>
+            <div class="user-photo" style="background: url('<%= review.image.url %>') no-repeat center;"/></div>
           <% else %>
-            <div class="user-photo"><img src="<%= asset_path 'no_avatar.jpg' %>"/></div>
+            <div class="user-photo" style="background: url('<%= asset_path 'no_avatar.jpg' %>') no-repeat center;"/></div>
           <% end %>
           <div class="user-name">
               <%=review.title %>
