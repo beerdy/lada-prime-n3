@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application'  %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:image" content="<%= asset_path 'lada2.jpg' %>">
     
     <% if @page_options %>
       <title><%= @page_options[:title] %> | Автосервис Липецк ЛАДА ПРАЙМ. Сервис автомобилей ВАЗ премиального качества!</title>
