@@ -1,3 +1,7 @@
+#intro.small{
+	background:#455A65;
+	height:140px;
+}
 .service {
 	padding: 70px 0 70px;
 }
@@ -874,7 +878,9 @@ section.service#contacts{
 section.service#contacts:after{
 	display: none;
 }
-
+.text-center{
+	text-align: center;
+}
 @media screen and (max-width: 800px) {
 	.contentpage_box{
 		padding:0 10px 0 10px;

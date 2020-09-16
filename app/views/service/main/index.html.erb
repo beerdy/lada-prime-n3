@@ -1,20 +1,5 @@
 <%= render 'layouts/lineup' %>
-<header class="service-header">
-  <div class="service-header-content">
-  <div class="zakladki">
-    <a href="/service">СЕРВИС</a>
-  </div>
-	<a href="#contacts" onclick="return pageTo('contacts');" class="service-leftBlock">
-		г. Липецк
-		<span>ЛЕБЕДЯНСКОЕ ШОССЕ, ВЛ. 2.</span>
-	</a>
-  <a href="/service" onclick="return pageTo('contacts');" class="service-logoBlock"></a>
-	<a href="tel:+7 <%= @phone.html_safe if @phone%>" class="service-rightBlock">
-    <%= @phone.html_safe if @phone%>  
-		<span>ГОРЯЧАЯ ЛИНИЯ</span>
-	</a>
-  </div>
-</header>
+<%= render 'service/main/head' %>
 
 <section id="intro">
 	<div class="mr-slider">
@@ -51,11 +36,9 @@
 
 <section class="service uslugi-small">
   <div class="contentpage_box">
-    <a href="/service/jobs/tehnicheskoe-obsluzhivanie" class="uslugi-small-iteam u01">Техническое<br>обслуживание</a>
-    <a href="/service/jobs/uslugi-servisa" class="uslugi-small-iteam u02">Услуги<br>сервиса</a>
-    <a href="/service/jobs/kuzovnoy-remont" class="uslugi-small-iteam u03">Кузовной<br>ремонт</a>
-    <a href="/service/jobs/zapchasti" class="uslugi-small-iteam u04">Запчасти</a>
-    <a href="/service/jobs/evakuatsiya" class="uslugi-small-iteam u05">Эвакуация</a>
+    <% Service::Job.all.each do |job| %>
+      <a href="/service/jobs/<%= job.link %>" style="background-image: url('<%= job.image.url if job.image %>');" class="uslugi-small-iteam"><%= job.title %></a>
+    <% end %>
   </div>
 </section>
 
@@ -123,7 +106,7 @@
     <section id="contacts" class="service">
       <div class="contentpage_box">
           <h2>Контакты</h2>
-          <div style="overflow:hidden;margin:0 0 20px 0;">
+          <div class="contacts-wrapper">
             <div class="phone"><%= @phone.html_safe if @phone%></div>
             <div class="mail"><%=  @email.html_safe if @email%></div>
             <div class="place"><%= @place.html_safe if @place%></div>

@@ -1,22 +1,8 @@
 <%= render 'layouts/lineup' %>
-<header class="service-header">
-  <div class="service-header-content">
-    <div class="zakladki">
-      <a href="/service">СЕРВИС</a>
-    </div>
-    <a href="#contacts" onclick="return pageTo('contacts');" class="service-leftBlock">
-      г. Липецк
-      <span>ЛЕБЕДЯНСКОЕ ШОССЕ, ВЛ. 2.</span>
-    </a>
-    <a href="/service" onclick="return pageTo('contacts');" class="service-logoBlock"></a>
-    <a href="tel:+7 920 495-55-11" class="service-rightBlock">
-      +7 920 495-55-11
-      <span>ГОРЯЧАЯ ЛИНИЯ</span>
-    </a>
-  </div>
-</header>
 
-<section id="intro" style="background:#455A65;height:140px;"></section>
+<%= render 'service/main/head' %>
+
+<section id="intro" class="small"></section>
 <section class="service uslugi-small">
   <div class="contentpage_box">
     <% @service_jobs.each do |job| %>
@@ -50,7 +36,7 @@
 <section id="contacts" class="service">
   <div class="contentpage_box">
       <h2>Контакты</h2>
-      <div style="overflow:hidden;margin:0 0 20px 0;">
+      <div class="contacts-wrapper">
         <div class="phone"><%= @phone.html_safe if @phone%></div>
         <div class="mail"><%=  @email.html_safe if @email%></div>
         <div class="place"><%= @place.html_safe if @place%></div>
@@ -67,6 +53,5 @@
   <a href="/pages/politics">Политика</a>
   <a href="#" onclick="return false;" class="popupOpen">Обратная связь</a>
 </footer>
-= link_to 'Back', service_jobs_path
 
 
