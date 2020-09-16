@@ -1,0 +1,20 @@
+<section id="contacts" class="service">
+  <div class="contentpage_box">
+      <h2>Контакты</h2>
+      <div class="contacts-wrapper">
+        <div class="phone"><a href="tel:+7<%= @phone.html_safe %>"><%= @phone.html_safe if @phone%></a></div>
+        <div class="mail"><%=  @email.html_safe if @email%></div>
+        <div class="place"><%= @place.html_safe if @place%></div>
+      </div>
+      <%= @map.html_safe if Rails.env.production? %>
+  </div>
+</section>
+
+<footer>
+  <div class="txtt">
+    Все права защищены © 2006–2020, ПРАЙМ, официальный дилер LADA
+  </div>
+  <a href="/pages/vakansi">Вакансии</a>
+  <a href="/pages/politics">Политика</a>
+  <a href="#" onclick="return false;" class="popupOpen">Обратная связь</a>
+</footer>
