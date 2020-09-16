@@ -23,6 +23,7 @@
       <%=@service_sale.link%>
       </div>
     <div class="general-text">
+      <h4><%= "#{@service_sale.title} - #{@service_sale.slave}" %></h4>
       <%=@service_sale.description.html_safe if @service_sale.description %>
     </div>
 
