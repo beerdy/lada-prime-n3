@@ -30,7 +30,7 @@
 
     <div class="general-phone">
       Проконсультируем по любым вопросам,<br>связанными с ремонтом вашего автомобиля
-      <span>(4742) 500-777</span>
+      <span><a href="tel:+74742500777">(4742) 500-777</a></span>
     </div>
 
 </section>
@@ -43,7 +43,7 @@
   <div class="contentpage_box">
       <h2>Контакты</h2>
       <div class="contacts-wrapper">
-        <div class="phone"><%= @phone.html_safe if @phone%></div>
+        <div class="phone"><a href="tel:+74742500777"><%= @phone.html_safe if @phone%></a></div>
         <div class="mail"><%=  @email.html_safe if @email%></div>
         <div class="place"><%= @place.html_safe if @place%></div>
       </div>
