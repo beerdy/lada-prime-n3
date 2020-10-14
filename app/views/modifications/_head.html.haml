@@ -21,7 +21,7 @@
             .colors.js-colors{ :style => 'background-color: #'+color.rgb, "color-id" => color.id, "modification-id" => modification.id }
       .info-sale.posadka
         %span от
-        = modification.complectations_minimum_price
+        = number_to_currency(modification.complectations_minimum_price, precision: 0, unit: "")
         %span ₽
       %a.buttonA.popupOpen{:href => "#"} Получить предложение
       %a.buttonA.price.popupOpen{:href => "https://prime.lada.ru/ds/cars/#{modification.model.url}/#{modification.anchor_name}/print_prices.pdf", :target => "_blank"} Прайс-лист
