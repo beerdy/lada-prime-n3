@@ -1,3 +1,4 @@
+# After parser
 class ComplectationShared
     attr_reader :modification, :modification_id_on_site, :description
 

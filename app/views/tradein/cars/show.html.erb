@@ -1,0 +1,106 @@
+<section id="car" class="contentpage animated fadeIn">
+  <div class="mr-slider car">
+    <ul class="mr-slider-wrapper">
+      <% @tradein_car.car_images.each do |image| %>
+      <li class="mr-slider-slide" style="background-image: url(<%= image.image.try(:url) %>);"></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="contentpage_box">
+    <h1><%= @tradein_car.model %> <%= @tradein_car.lineup %> <%= @tradein_car.case %> <%= @tradein_car.year %> г. в.</h1>
+    <div class="general-info">
+      <div class="info-line">
+          <div class="line-left">Двигатель:</div><div class="line-right"><%= @tradein_car.capacity %> л. / (<%= @tradein_car.power %> л.с.) / <%= @tradein_car.engine %></div>
+      </div>
+      <div class="info-line">
+          <div class="line-left">Трансмиссия:</div><div class="line-right"><%= @tradein_car.transmission %></div>
+      </div>
+      <div class="info-line">
+          <div class="line-left">Цвет:</div><div class="line-right"><%= @tradein_car.color %></div>
+      </div>
+      <div class="info-line">
+          <div class="line-left">Пробег:</div><div class="line-right"><%= @tradein_car.mileage %></div>
+      </div>
+      <div class="info-line">
+          <div class="line-left">Дата размещения:</div><div class="line-right"><%= @tradein_car.created_at.strftime("%d-%m-%Y") %></div>
+      </div>
+      <div class="info-price"><%= number_to_currency(@tradein_car.price, precision: 0, unit: "") %> ₽</div>
+      <a href="#" class="buttonA popupOpen">ЗАПРОС НА ПОКУПКУ</a>
+      <a href="#" class="buttonB popupOpen">в Кредит от 2 823 ₽ / мес</a>
+     </div>
+           <div class="photo-gallery" id="sashazaebal">
+      <% @tradein_car.car_images.each do |image| %>
+        <a class="product-gallery" href="<%= image.try(:image).url %>">
+          <div class="img" style="background-image: url(<%= image.try(:image).url(:medium) %>);"></div>
+        </a>
+      <% end %>
+    </div>
+</section> 
+<section id="car-info" class="contentpage animated fadeIn">
+  <div class="contentpage_box">
+    <div class="content-left">
+
+
+       <div class="tabs">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1" title="Вкладка 1">Характеристики</label>
+        <input id="tab2" type="radio" name="tabs">
+             <label for="tab2" title="Вкладка 2">Опции</label>
+     
+        <span id="content-tab1">
+            <div class="info-line">
+                <div class="line-left">Марка:</div>
+                <div class="line-right"><%= @tradein_car.model %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Модель:</div>
+                <div class="line-right"><%= @tradein_car.lineup %></div>
+            </div>
+           	<div class="info-line">
+                <div class="line-left">Год выпуска:</div>
+                <div class="line-right"><%= @tradein_car.year %></div>
+            </div>
+           	<div class="info-line">
+                <div class="line-left">Пробег:</div>
+                <div class="line-right"><%= @tradein_car.mileage %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Состояние:</div>
+                <div class="line-right"><%= @tradein_car.condition %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Владельцев по ПТС:</div>
+                <div class="line-right"><%= @tradein_car.owners %></div>
+            </div>
+             <div class="info-line">
+                <div class="line-left">Тип кузова:</div>
+                <div class="line-right"><%= @tradein_car.case %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Коробка передач:</div>
+                <div class="line-right"><%= @tradein_car.transmission %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Привод:</div>
+                <div class="line-right"><%= @tradein_car.drive %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Руль:</div>
+                <div class="line-right"><%= @tradein_car.wheel %></div>
+            </div>
+            <div class="info-line">
+                <div class="line-left">Цвет:</div>
+                <div class="line-right"><%= @tradein_car.color %></div>
+            </div>
+        </span>  
+        <span id="content-tab2">
+            <%=  @tradein_car.description.try(:html_safe) %>
+        </span> 
+        </div>
+    </div>
+    <div class="content-right">
+      <%=  @tradein_car.comments.try(:html_safe) %>
+      <a href="#" class="buttonA calc popupOpen">ЗАПРОС НА РЕДИТ</a>
+    </div>
+  </div>
+</section>

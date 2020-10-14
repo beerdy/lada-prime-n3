@@ -1,12 +1,23 @@
+= render 'modifications/head', modification: @modification
+
 = render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: @modification
 
 %section#cars.contentpage
   .contentpage_box
     .cars-box
+      %h2
+        Комплектации и цены ЛАДА
+        = @modification.name
+
       - sort_complectations(@modification.complectations).each do |complectation|
         %a.car-iteam{ :href => "/complectations/"+complectation.id.to_s, :complect => "#"+complectation.name }
           .car-title
-            = @modification.name
+            .price-old
+              .price
+                = number_to_currency(complectation.price_old, precision: 0, unit: "")
+                %span.ru-rub ₽
+              .line
+                .subline
           .car-price
             = number_to_currency(complectation.price_new, precision: 0, unit: "") 
             %span.ru-rub ₽
@@ -24,8 +35,7 @@
               .mod-left В наличии:
               .mod-right
                 - if complectation.complectation_colors.count > 0
-                  - complectation.complectation_colors.each do |color|
-                    .colors.js-colors{ :style => 'background-color: #'+color.color.rgb, "color-id" => color.color.id, "modification-id" => @modification.id }
+                  = complectation.complectation_colors.count
                 - else
                   УТОЧНИТЬ
             .mod-line

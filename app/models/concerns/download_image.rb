@@ -33,11 +33,12 @@ module DownloadImage
         Thread.abort_on_exception = true
         Thread.new do
           loop do
-            #puts "LINK FOR SAVE: #{@link}"
+            Rails.logger.debug  "Link for save from avito - #{@link}"
             begin
               @image = open(@link)
               @downloaded = true
             rescue Exception => e
+              Rails.logger.debug  "Error upload file from avito - #{e}"
               break
             end
           end

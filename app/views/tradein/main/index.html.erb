@@ -1,74 +1,113 @@
-<section id="home" class="contentpage" style="height:auto;padding:100px 0 100px 0;">
+<section id="carhome" class="contentpage">
+  <div class="VideoYoutube"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/Al-P1pGBx8A?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
   <div class="contentpage_box">
-    <h1>Подобрать автомобиль с пробегом</h1>
-    <p>Плановое техническое обслуживание – это комплекс мероприятий, направленный на диагностику и устранение неисправностей автомобиля, помогающий увеличить срок службы Вашего автомобиля.</p>
+    <h1>Авто с пробегом</h1>
   </div>
 </section>
+
 
 <section id="tradein" class="contentpage">
   <div class="contentpage_box">
     <div class="tradein-filters">
+      <form method="get">
       <h2>Фильтры</h2>
-      <select>
-        <option></option>
-      </select>
+      <h3>Марка</h3>
+      <div class="fields-box" id="js-marka-select">
+        <select name="bymodel">
+          <% if @bymodel %>
+            <option disabled><%= @bymodel %></option>
+            <option selected="selected" value="<%= @bymodel %>"></option>
+          <% else %>
+            <option disabled>Выберите марку</option>
+            <option selected="selected" value=""></option>
+          <% end %>
+          <% @models.each do |model| %>
+            <% unless model==@bymodel %>
+            <option value="<%= model %>"><%= model %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </div>
+
+      <h3>Модель</h3>
+      <div class="fields-box <%= 'invisible' if @lineups.count<=0 %>" id="js-lineup-select">
+        <select name="bylineup">
+          <% if @bylineup %>
+            <option disabled><%= @bylineup %></option>
+            <option selected="selected" value="<%= @bylineup %>"></option>
+          <% else %>
+            <option disabled>Выберите модель</option>
+            <option selected="selected" value=""></option>
+          <% end %>
+          <% @lineups.each do |lineup| %>
+            <% unless lineup==@bylineup %>
+            <option value="<%= lineup %>"><%= lineup %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </div>
+
+<!--       <h3>Двигатель <%= @lineup %></h3>
+      <label class="custom-checkbox">
+        <input type="checkbox" value="value-1"><span>Indigo</span>
+      </label>
+
+      <h3>Привод</h3>
+      <label class="custom-checkbox">
+        <input type="checkbox" value="value-1"><span>Indigo</span>
+      </label>
+
+      <h3>Трансмиссия</h3>
+      <label class="custom-checkbox">
+        <input type="checkbox" value="value-1"><span>Indigo</span>
+      </label> -->
+
+      <h3>Цена</h3>
       <div class="filter-price">
-          <div class="bar">
-              <div class="lp" data-pos="0.1"></div>
-              <div class="rp" data-pos="0.8" data-max="56000"></div>
-          </div>
+          <div id="filter__range_price" pricemax="<%=@pricemin%>" pricemin="<%=@pricemax%>"></div>
+          <input type="HIDDEN" value="" name="pricemax" id="priceMax">
+          <input type="HIDDEN" value="" name="pricemin" id="priceMin">
       </div>
-      <div class="filter-km">
-          <div class="bar">
-              <div class="lp" data-pos="0.1"></div>
-              <div class="rp" data-pos="0.8" data-max="56000"></div>
-          </div>
+
+<!--       <h3>Год</h3>
+      <div class="filter-price">
+          <div id="filter__range_year" yearmax="2020" yearmin="1990"></div>
+          <input type="HIDDEN" value="" name="yearmax" id="yearMax">
+          <input type="HIDDEN" value="" name="yearmin" id="yearMin">
       </div>
+
+      <h3>Пробег</h3>
+      <div class="filter-price">
+          <div id="filter__range_km" kmmax="10000" kmmin="3000"></div>
+          <input type="HIDDEN" value="" name="kmmax" id="kmMax">
+          <input type="HIDDEN" value="" name="kmmin" id="kmMin">
+      </div>
+
+      <h3>Двигатель</h3>
+      <div class="filter-price">
+          <div id="filter__range_dvi" dvimax="4" dvimin="1"></div>
+          <input type="HIDDEN" value="" name="dvimax" id="dviMax">
+          <input type="HIDDEN" value="" name="dvimin" id="dviMin">
+      </div> -->
+      <input type="submit" value="ОТПРАВИТЬ" class="buttonA">
+    </form>
     </div>
     <div class="tradein-cars">
+      <div class="fields-box">
+        <a class="refresh" href="/tradein">Сбросить все</a>
+        <div class="orderby min">Сортировка: по цене</div>
+      </div>
       <div class="tradein-cars-wrapper">
-        <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
+        <% @tradein_cars.each do |element| %>
+        <% car = element.modification %>
+        <%= link_to element.modification, class: 'tradein-car-iteam' do %>          
+          <div class="car-iteam-photo"><%= image_tag car.car_images.first.image.url %></div>
+          <h3><%= "#{car.model} #{car.lineup}"%></h3>
+          <div class="car-iteam-desc"><%= "#{car.case.capitalize}, #{car.capacity}, #{car.transmission}, #{car.mileage} км, #{car.year} г." %></div>
+          <div class="car-iteam-price"> <%= car.price %> <span>₽</span></div>
           <div class="buttonA">Подробнее</div>
-        </a>
-         <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
-          <div class="buttonA">Подробнее</div>
-        </a>
-         <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
-          <div class="buttonA">Подробнее</div>
-        </a>
-         <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
-          <div class="buttonA">Подробнее</div>
-        </a>
-         <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
-          <div class="buttonA">Подробнее</div>
-        </a>
-         <a class="tradein-car-iteam">
-          <div class="car-iteam-photo"></div>
-          <h3>LADA Vesta </h3>
-          <div class="car-iteam-desc">Универсал, 1774, Робот, 43 000 км, 2019 г.</div>
-          <div class="car-iteam-price">532 710 <span>₽</span></div>
-          <div class="buttonA">Подробнее</div>
-        </a>
+        <% end %>
+        <% end %>
       </div>
     </div>
   </div>

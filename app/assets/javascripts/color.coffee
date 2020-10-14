@@ -1,7 +1,7 @@
 $( document ).ready ()->
   $('.js-colors').on 'click', (e) ->
     item = $(this)
-    img1 = item.parents('.car-iteam').find '.car-image'
+    img1 = item.closest('.car-iteam').find '.car-image'
     img2 = $(".complectation-img")
 
     color_id = item.attr 'color-id'

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'qwiz/index'
+  namespace :tradein do
+    resources :car_images
+  end
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
@@ -29,7 +33,6 @@ Rails.application.routes.draw do
       post :complectation
       post :modification_image
       post :instock_price
-      post :tth
     end
   end
 
@@ -53,6 +56,7 @@ Rails.application.routes.draw do
     get 'main/index'
     
     resources :cars
+    resources :parsers
   end
 
   # resources :engines

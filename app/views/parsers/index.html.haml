@@ -48,6 +48,20 @@
         = image_tag 'ok.png'
       .status
         = image_tag 'status.gif'
+  .control-panel-parser
+    .item-control
+      .avito-links
+        %textarea#link_import_avito
+        %hr/
+        %input#js-import-avito{:name => "Спарсить Avito", :type => "submit"}/
+        %hr/
+        #process_block
+    .wrapper
+      .ok
+        = image_tag 'ok.png'
+      .status
+        = image_tag 'status.gif'
+
   .podval
     %br
     %hr

@@ -52,8 +52,8 @@
       .info-price
         = number_to_currency(@complectation.price_new, precision: 0, unit: "") 
         ₽
-      %a.buttonA.popupOpen{:href => "https://prime.lada.ru/ds/form_carord.php", :target => '_blank'} Получить предложение
-      %a.buttonB{:href => "#"} 
+      %a.buttonA.popupOpen{:href => "#"} Получить предложение
+      %a.buttonB.popupOpen{:href => "#"} 
         в Кредит от 
         = number_to_currency(@complectation.credit_day, precision: 0, unit: "") 
         ₽ / день

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Tradein car:
+  = @tradein_car_image.tradein_car
+
+= link_to 'Edit', edit_tradein_car_image_path(@tradein_car_image)
+\|
+= link_to 'Back', tradein_car_images_path

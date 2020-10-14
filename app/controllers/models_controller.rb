@@ -1,5 +1,5 @@
 class ModelsController < ApplicationController
-  include FilterPrice
+  include FilterCars
 
   before_action :set_model_s, only: [:show, :index]
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy, :new ]

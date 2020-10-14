@@ -1,0 +1,173 @@
+<script>
+  var chatbot = {
+      answer: function(obj, next){
+        if(!$(obj).hasClass('checked')){
+          $(obj).siblings(".checked").removeClass("checked");
+          var text = $(obj).children('.answer-name').text();
+          chatbot.addUserMessage(text);
+          chatbot.nextBotMessage(next);
+          $(obj).addClass('checked');
+          var height = $(".chat-wrapper").height();
+          $("#chat").animate({"scrollTop":height},"slow");
+        }
+       
+      },
+      nextBotMessage: function(next){
+        var html = $('#mes0'+next).clone();
+        console.log(html);
+        this.addBotMessage(html);
+        var height = $(".chat-wrapper").height();
+        $("#chat").animate({"scrollTop":height},"slow");
+      },
+      addBotMessage: function(html) {
+        $('.chat-wrapper').append('<div class="writing">Кристина печатает...</div>');
+        setTimeout(() => { $('.writing').remove(); }, 1000);
+        setTimeout(() => { 
+          $(html)
+            .appendTo('.chat-wrapper')
+            .css({ opacity: 0, top: "10px"})
+            .animate({display: 'block', opacity: 1, top: "0px" }, 'slow'); 
+        }, 1000);
+
+      },
+      addUserMessage: function(userText) {
+        var html =  '<div class="message user" data-mesbot="0">'+
+                     '<div class="message-content">'+
+                        '<div class="message-content-text">'+userText+'</div>'+
+                      '</div>'+
+                    '</div>';
+        $(html)
+        .appendTo('.chat-wrapper')
+            .css({ opacity: 0, top: "10px"})
+            .animate({display: 'block', opacity: 1, top: "0px" }, 'slow'); 
+      }
+  }
+
+  $(document).ready(function() {
+    if(getURLVar('chat')=='1'){
+
+        
+        $('#chat').show();
+        $('body').css('overflow','hidden');
+        chatbot.nextBotMessage(1);
+        setTimeout(() => {chatbot.nextBotMessage(2)}, 2000);
+        setTimeout(() => {chatbot.nextBotMessage(3)}, 4000);
+        setTimeout(() => {var height = $(".chat-wrapper").height();$("#chat").animate({"scrollTop":height},"slow");}, 4000);
+    }
+  });
+</script>
+<section id="chat" class="contentpage" style="display:none;">
+  <div class="chat">
+    <div class="closechat" onclick="$('#chat').remove();$('body').css('overflow','auto');">Покинуть чат</div>
+    <div class="chatheader">
+      <div class="chatheader-col">
+        <div class="ico ai3"></div>
+        <div class="text">LADA в кредит от 220 руб/день</div>
+      </div>
+      <div class="chatheader-col">
+        <div class="ico ai2"></div>
+        <div class="text">Автокредит на LADA от3,9%</div>
+      </div>
+      <div class="chatheader-col">
+        <div class="ico ai1"></div>
+        <div class="text">Выгода 10% поГоспрограмме</div>
+      </div>
+    </div>
+    <div class="chat-wrapper"></div>
+    <div class="chat-history" style="display:none;">
+      <div id="mes01" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Здравствуйте! Меня зовут Кристина. Я онлайн-консультант автосалона LADA.
+          </div>
+        </div>
+      </div>
+      <div id="mes02" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Пожалуйста, ответьте на пару вопросов, чтобы я могла составить для вас предложение с вариантами комплектации и стоимостью.
+          </div>
+        </div>
+      </div>
+      <div id="mes03" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Какую модель автомобиля вы рассматриваете? Выберите модель из списка, нажав на нее:
+          </div>
+        </div>
+        <div class="message-answer">          
+          <% @models.each do |model| %>
+            <% model.modifications.each do |modification| %>
+              <div class="answer-link auto" onclick="chatbot.answer(this, 4);">
+                <div class="answer-name"><%= modification.name %></div>
+                <div class="answer-img">
+                  <img src = "#{model.image.url}">
+                  <div class="answer-price"> от 746 910 ₽</div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+      <div id="mes04" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            В течение какого времени планируете совершить покупку?
+          </div>
+        </div>
+        <div class="message-answer">
+          <div class="answer-link" onclick="chatbot.answer(this, 5);">
+            <div class="answer-name">В течени недели</div></div>
+          <div class="answer-link" onclick="chatbot.answer(this, 5);">
+            <div class="answer-name">В этом месяце</div></div>
+          <div class="answer-link" onclick="chatbot.answer(this, 5);">
+            <div class="answer-name">В этом месяце</div></div>
+          <div class="answer-link" onclick="chatbot.answer(this, 5);">
+            <div class="answer-name">В ближайшие пол года</div></div>
+          <div class="answer-link" onclick="chatbot.answer(this, 5);">
+            <div class="answer-name">Не определился</div></div>
+        </div>
+      </div>
+      <div id="mes05" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Как планируете приобретать автомобиль?
+          </div>
+        </div>
+        <div class="message-answer">
+          <div class="answer-link" onclick="chatbot.answer(this, 6);">
+            <div class="answer-name">В кредит</div></div>
+          <div class="answer-link" onclick="chatbot.answer(this, 6);">
+            <div class="answer-name">Наличными</div></div>
+        </div>
+      </div>
+      <div id="mes06" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Отлично! Наш менеджер свяжется с Вами, уточнит детали и сделает предложение на покупку LADA с учетом максимальной выгоды.
+            <br />
+            Оставьте Ваш номер телефона.
+          </div>
+        </div>
+        <div class="message-answer">
+          <input placeholder="+7 (___) " type="text"/><div class="answer-link" onclick="chatbot.answer(this, 7);">
+            <div class="answer-name">Отправить</div></div>
+        </div>
+      </div>
+      <div id="mes07" class="message bot">
+        <div class="message-img"></div>
+        <div class="message-content">
+          <div class="message-content-text">
+            Хорошего дня! Мы скоро Вам перезвоним;)
+          </div>
+        </div>
+      </div></div>
+  </div></section>
+

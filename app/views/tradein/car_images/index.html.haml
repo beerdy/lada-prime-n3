@@ -1,0 +1,21 @@
+%h1 Listing tradein_car_images
+
+%table
+  %thead
+    %tr
+      %th Tradein car
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tradein_car_images.each do |tradein_car_image|
+      %tr
+        %td= tradein_car_image.tradein_car
+        %td= link_to 'Show', tradein_car_image
+        %td= link_to 'Edit', edit_tradein_car_image_path(tradein_car_image)
+        %td= link_to 'Destroy', tradein_car_image, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Car image', new_tradein_car_image_path

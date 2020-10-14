@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_153234) do
+ActiveRecord::Schema.define(version: 2020_10_14_110730) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -398,6 +398,17 @@ ActiveRecord::Schema.define(version: 2020_09_15_153234) do
     t.index ["modification_id"], name: "index_specifications_on_modification_id"
   end
 
+  create_table "tradein_car_images", force: :cascade do |t|
+    t.integer "tradein_car_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["tradein_car_id"], name: "index_tradein_car_images_on_tradein_car_id"
+  end
+
   create_table "tradein_cars", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -408,7 +419,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_153234) do
     t.string "type"
     t.string "color"
     t.integer "owners"
-    t.integer "millage"
+    t.integer "mileage"
     t.string "case"
     t.string "drive"
     t.integer "year"
@@ -421,6 +432,15 @@ ActiveRecord::Schema.define(version: 2020_09_15_153234) do
     t.boolean "show"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comments"
+    t.string "model"
+    t.string "lineup"
+    t.string "capacity"
+    t.string "wheel"
+    t.integer "price"
+    t.string "slave"
+    t.string "string"
+    t.text "options"
   end
 
   create_table "users", force: :cascade do |t|

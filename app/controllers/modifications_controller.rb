@@ -1,5 +1,5 @@
 class ModificationsController < ApplicationController
-  include FilterPrice
+  include FilterCars
   
   before_action :set_modification, only: [:show, :edit, :update, :destroy]
   before_action :filter_price
