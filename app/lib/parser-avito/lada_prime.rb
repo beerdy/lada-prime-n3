@@ -6,12 +6,13 @@ module LadaPrime
       @data = {}
     end
     
-    def load url
+    def load url, html=''
       if Rails.env.production?
         html = `ssh rails5@81.20.204.174 -p 22227 /home/rails5/Dev/github/lada-prime/parser/engine.sh #{url}`
       else
-        @doc = Nokogiri::HTML(html)
+        html = open(url)
       end
+      @doc = Nokogiri::HTML(html)
     end
 
     def parse
