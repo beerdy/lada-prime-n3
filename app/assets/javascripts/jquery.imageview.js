@@ -22,7 +22,7 @@
 				+'<a href="javascript:;" class="hide"></a>'
 				+'<a href="javascript:;" class="prev"></a>'
 				+'<a href="javascript:;" class="next"></a>'
-				+'<div class="image"><img src="" /></div>'
+				+'<div class="image"><div class="imggg"><img src="" /></div></div>'
 				+'</div>';
 		
 			this.$viewer = $(html).appendTo('body');
@@ -30,7 +30,7 @@
 			this.$hide = $('.hide', this.$viewer);
 			this.$prev = $('.prev', this.$viewer);
 			this.$next = $('.next', this.$viewer);
-			this.$image = $('.image img', this.$viewer);
+			this.$image = $('.imggg img', this.$viewer);
 		
 			this.$hide.click($.proxy(this.hide, this));
 			this.$prev.click($.proxy(this.prev, this));

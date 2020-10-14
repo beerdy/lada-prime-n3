@@ -353,8 +353,9 @@ label{
 }
 
 .line-up{
-	// position: fixed;
+	position: relative;
 	background-color: #455A65;
+	z-index: 999;
 }
 	.line-up-content{
 		max-width: 1200px;
@@ -2280,7 +2281,7 @@ footer{
 		#car-info .info-line:nth-child(2n){
 		 	background: #DCE6EC;
 		 }
-		 
+
 		#car-info .info-line.carpart{
 			background: #DCE6EC;
 		}
