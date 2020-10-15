@@ -73,4 +73,5 @@ Rails.application.routes.draw do
   # ЗаглушкИ для несуществующих routes. К примеру картинок подгружаемых библиотеками JS
   get '/galleries/original/missing.png', controller: 'main',  action: 'missing', :defaults => { :format => 'json' } 
   get '/images/original/missing.png', controller: 'main',  action: 'missing', :defaults => { :format => 'json' } 
+  get '/previews/original/missing.png', controller: 'main',  action: 'missing', :defaults => { :format => 'json' } 
 end

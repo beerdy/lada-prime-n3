@@ -103,7 +103,7 @@
         <%= link_to element.modification, class: 'tradein-car-iteam' do %>          
           <div class="car-iteam-photo"><%= image_tag car.car_images.first.image.url %></div>
           <h3><%= "#{car.model} #{car.lineup}"%></h3>
-          <div class="car-iteam-desc"><%= "#{car.case.capitalize}, #{car.capacity}, #{car.transmission}, #{car.mileage} км, #{car.year} г." %></div>
+          <div class="car-iteam-desc"><%= "#{car.case.capitalize}, #{car.capacity}, #{car.transmission}, <br> #{number_to_currency(car.mileage, precision: 0, unit: "")} км, #{car.year} г.".html_safe %></div>
           <div class="car-iteam-price"> <%= number_to_currency(car.price, precision: 0, unit: "") %> <span>₽</span></div>
           <div class="buttonA">Подробнее</div>
         <% end %>

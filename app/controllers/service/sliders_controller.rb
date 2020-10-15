@@ -4,7 +4,6 @@ class Service::SlidersController < ApplicationController
   # GET /service/sliders
   # GET /service/sliders.json
   def index
-    @service_sliders = Service::Slider.all
   end
 
   # GET /service/sliders/1

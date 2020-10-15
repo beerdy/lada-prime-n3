@@ -9,7 +9,7 @@
   </div>
   <div class="slider">
     <ul class="sliderwrapper">
-      <% sort_null(@sliders).each do |slide| %>
+      <% @sliders.each do |slide| %>
       <li class="slide" style="background-image: url('<%= slide.gallery.url %>');">
         <% if slide.slave != '' %>
           <div class="VideoYoutube"><iframe width="100%" height="100%" src="<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>

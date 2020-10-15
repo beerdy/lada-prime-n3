@@ -4,7 +4,7 @@ class SlidersController < ApplicationController
   # GET /sliders
   # GET /sliders.json
   def index
-    @sliders = Slider.all
+    @sliders = sort_null(Slider.all).sort_by(&:sort).reverse
   end
 
   # GET /sliders/1
