@@ -1,6 +1,6 @@
 class Tradein::MainController < ApplicationController
   include FilterCars
-  
+  include SortNull
   # From params in included FilterCars
   before_action :filter_price, only: [:index]
   
