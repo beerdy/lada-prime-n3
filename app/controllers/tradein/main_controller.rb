@@ -9,6 +9,7 @@ class Tradein::MainController < ApplicationController
   before_action :set_tradein_cars, only: [:index]
 
   def index
+    @sliders  = sort_null(Slider.all).sort_by(&:sort).reverse
   end
 
   private
