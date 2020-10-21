@@ -22,5 +22,6 @@
   </head>
   <body>
     <%= yield %>
+    <%= @footer.html_safe if Rails.env.production?%>
   </body>
 </html>
