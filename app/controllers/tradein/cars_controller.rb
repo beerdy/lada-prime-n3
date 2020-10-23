@@ -10,6 +10,7 @@ class Tradein::CarsController < ApplicationController
   # GET /tradein/cars/1
   # GET /tradein/cars/1.json
   def show
+    @sliders  = sort_null(Slider.all).sort_by(&:sort).reverse
   end
 
   # # GET /tradein/cars/new
