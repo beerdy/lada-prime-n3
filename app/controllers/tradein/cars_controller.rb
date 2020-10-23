@@ -1,4 +1,5 @@
 class Tradein::CarsController < ApplicationController
+  include SortNull
   before_action :set_tradein_car, only: [:show]
 
   # # GET /tradein/cars
