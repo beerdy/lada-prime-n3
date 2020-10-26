@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include CodeWatcher
+  include SortNull
   
   protect_from_forgery with: :exception
   before_action :code_watcher
