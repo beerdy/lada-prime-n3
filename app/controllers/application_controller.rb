@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     
     @keywords_and_other    = @head.slave
     @description_and_title = @head.description
+
+    @sliders = sort_null(Slider.all).sort_by(&:sort).reverse
   end
 
   private
