@@ -3,7 +3,7 @@ class MainController < ApplicationController
   def index
     @message  = Message.new
     @models   = Model.all
-    @products = sort_null(Product.all).sort_by(&:sort).reverse
+    @products = sort_null(Product.all)
 
     expires_in 3.hours, public: true
   end
