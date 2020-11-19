@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :specials
+  resources :actions
   get 'qwiz/index'
   namespace :tradein do
     resources :car_images
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   end
   resources :parsers do
     collection do
+      post :tth
       post :model
       post :complectation
       post :modification_image
