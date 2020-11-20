@@ -1,0 +1,56 @@
+<script type="text/javascript">
+  window.slideCount = <%= @sliders.count %>;
+</script>
+<section id="home" class="contentpage">
+  <div class="slider">
+    <ul class="sliderwrapper">
+      <% @sliders.each do |slide| %>
+      <li class="slide" style="background-image: url('<%= slide.gallery.url %>');">
+        <% if slide.slave != '' %>
+          <div class="VideoYoutube"><iframe width="100%" height="100%" src="<%= slide.slave %>?rel=0&hd=1&controls=0&modestbranding=0&autoplay=1&&showinfo=0&start=8&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" controls="0"></iframe></div>
+        <% end unless slide.slave.nil? if Rails.env.production? %>
+        <div class="slideContent">
+          <div class="textBox">
+            <div class="word1"><%= slide.word1.html_safe %></div>
+            <div class="word2"><%= slide.word2.html_safe %></div>
+            <p><%= slide.description.html_safe %></p>
+            <a href="<%= slide.url %>" target="_blank" class="buttonA"><%= slide.link %></a>
+            <div class="buttonB"><span>НАПИСАТЬ НАМ В</span>
+            <div class="socials">
+              <a href="https://vk.com/lipetskprime" class="vk" target="_blank" ></a>
+              <a href="https://www.instagram.com/prime_lipetsk" target="_blank" class="insta"></a>
+              <a href="https://www.youtube.com/channel/UCNusqHRWAdF75CUioreV8HQ" class="youtube" target="_blank" ></a>
+              <a href="https://www.facebook.com/lipetskprime" class="fb" target="_blank" ></a>
+              <a href="https://ok.ru/lipetskprime" class="ok" target="_blank" ></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+    <div class="prev-btn"></div>
+    <div class="next-btn"></div>
+  </div>
+</section>
+
+<section class="service service-uslugi">
+  <div class="contentpage_box">
+    <h2>Акции сервиса</h2>
+
+    <div class="service-akcii-box">
+      <% Special.where(show:true).each_with_index do |sale,index| %>
+      <a href="<%= '/specials/'+sale.id.to_s %>" class="akcii-iteam">
+        <div class="numberr"><%=index+1 %></div>
+        <h3><%=sale.title %></h3>
+        <img src="<%= sale.preview.url if sale.preview %>"/>
+        <span class="plus"><%=sale.slave %></span>
+        <span class="date"><%=sale.link %></span>
+        <div class="buttonA">Подробнее</div>
+      </a>
+      <% end %>
+    </div>
+
+  </div>
+</section>
+
+<%= render '/messages/subscribe', message: @message %>

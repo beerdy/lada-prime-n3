@@ -84,8 +84,8 @@ class ModelsController < ApplicationController
     def set_model_s
       @models = Model.all
       
-      @model  = Model.find_by( id: params[:id] )
-      @model  = Model.find_by( url: params[:id] ) unless @model
+      @model  = Model.find_by( url: params[:id] ) 
+      @model  = Model.find_by( id: params[:id] ) unless @model
     end
     def set_filter
       @filter = Filter.new( @pricemin, @pricemax )

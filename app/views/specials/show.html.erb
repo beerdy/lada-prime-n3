@@ -1,0 +1,28 @@
+<% @page_options = {
+  :title => @special.title,
+  :description => "#{@special.title} - #{@special.slave}"
+} %>
+
+<section id="pagehome">
+  <div class="contentpage_box">
+    <h1><%=@special.title %></h1>
+    <div class="plus"><%=@special.slave%></div>
+  </div>
+</section>
+<section class="service service-uslugi">
+  <div class="contentpage_box">
+    <img src="<%= @special.image.url if @special.image %>"/>
+      <div class="dateBig">
+      <%=@special.link%>
+      </div>
+    <div class="general-text">
+      <h4><%= "#{@special.title} - #{@special.slave}" %></h4>
+      <%=@special.description.html_safe if @special.description %>
+    </div>
+
+    <div class="general-phone">
+      Проконсультируем по любым вопросам,<br>связанными с данной акцией можно по телефону
+      <span><a href="tel:+7<%= @phone.html_safe %>"><%= @phone.html_safe %></a></span>
+</section>
+
+<%= render '/messages/subscribe', message: @message %>

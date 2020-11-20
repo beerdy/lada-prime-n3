@@ -6,8 +6,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application'  %>
-
-    <%= @description_and_title.html_safe  %>
+    
+    <% if @page_options %>
+      <title><%= @page_options[:title] %> | Официальный дилер ЛАДА в Липецке - ПРАЙМ. Покупка новых автомобилей ВАЗ, АвтоВАЗ, ЛАДА!</title>
+      <meta name="title" content="<%= @page_options[:title] %> | Официальный дилер ЛАДА в Липецке - ПРАЙМ. Покупка новых автомобилей ВАЗ, АвтоВАЗ, ЛАДА!">
+      <meta name="description" content="<%= @page_options[:description] %> | Официальный дилер ЛАДА в Липецке - ПРАЙМ. Покупка новых автомобилей ВАЗ, АвтоВАЗ, ЛАДА! Новые машины ЛАДА в наличии. Весь модельный ряд ЛАДА в автосалоне ПРАЙМ город Липецк. Телефон: +7 (4742) 500-777">
+    <%else%>
+      <%= @description_and_title.html_safe  %>
+    <%end%>
+    
 
     <%= @keywords_and_other.html_safe  %>
 

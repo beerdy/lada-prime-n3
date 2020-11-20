@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_110730) do
+ActiveRecord::Schema.define(version: 2020_11_20_143653) do
+
+  create_table "actions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -123,6 +135,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_110730) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "models", force: :cascade do |t|
@@ -384,6 +397,26 @@ ActiveRecord::Schema.define(version: 2020_10_14_110730) do
     t.datetime "gallery_updated_at"
     t.string "word1"
     t.string "word2"
+  end
+
+  create_table "specials", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "slave"
+    t.string "link"
+    t.string "url"
+    t.integer "sort"
+    t.boolean "show"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "preview_file_name"
+    t.string "preview_content_type"
+    t.integer "preview_file_size"
+    t.datetime "preview_updated_at"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "specifications", force: :cascade do |t|

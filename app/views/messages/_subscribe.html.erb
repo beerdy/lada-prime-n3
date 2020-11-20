@@ -1,0 +1,21 @@
+<section class="service service-order white">
+  <div class="contentpage_box">
+      <h2>Подписка на акции ПРАЙМ</h2>
+      <script>
+        $(document).ready(function() {
+          $("#phone_2").mask("+7(999) 999-99-99");
+        });
+      </script>
+      <p>Автосалон ПРАЙМ – официальный дилер LADA в Липецке с декабря 2014 г.</p>
+      <%= form_with model: message, :html => { :onsubmit => "OrderSand(this)" } do |f| %>
+
+        <%= f.text_field :name, :placeholder => "Ваше Имя", :type => "text", class: "typeLineCenter" %>
+        <%= f.text_field :slave, :type => "hidden", value: 'subscribe' %>
+        <%= f.text_field :phone, :placeholder =>"+7 (999) 999-9999", :type => "text", class: "typeLineCenter", id: "phone_2"  %>
+        <%= f.text_field :email, :placeholder =>"E-Mail", :type => "text", class: "typeLineCenter" %>
+
+        <%= f.submit 'Отправить', :class => "buttonA"  %>
+      <% end %>
+    <small>При отправке формы Вы соглашаетесь на обработку персональных данных</small>
+  </div>
+</section>

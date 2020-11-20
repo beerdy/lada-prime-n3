@@ -70,6 +70,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(:title, :name, :description, :slave, :phone)
+      params.require(:message).permit(:title, :name, :description, :slave, :phone, :type, :email)
     end
 end

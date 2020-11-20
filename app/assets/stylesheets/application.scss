@@ -232,11 +232,15 @@ label{
 	text-align: center;
 	letter-spacing: 2px;
 	color: #FFFFFF;
-	background: #f7761f;
+
 	    background-position: left 20px center;
     background-size: 35px 35px;
     background-repeat: no-repeat;
     border:0;
+    background: linear-gradient(253.58deg, #FFC000 1.55%, #FA820F 95.8%);
+
+box-shadow: 0px 12px 35px rgba(160, 121, 0, 0.2);
+background-color:#FA820F;
 }
 
 
@@ -261,7 +265,8 @@ label{
 }
 
 .buttonA:hover, .wpcf7-submit:hover{
-	background-color: #B95A00;
+	background: linear-gradient(253.58deg, #FFC000 2.54%, #FA820F 28.06%);
+	background-color:#D76900;
 }
 
 .buttonB{
@@ -524,7 +529,7 @@ section.contentpage{
 	position: relative;
 	width:100%;
 	height:350px;
-	background:#455A65;
+	background: radial-gradient(48.65% 383.28% at 50.04% 50%, #233945 0%, #3F5864 100%);;
 	padding:100px 0 10px 0;
 }
 	#carhome h1{
@@ -553,6 +558,50 @@ section.contentpage{
 		background:image-url('bottomline.png') no-repeat center;
 		background-size: cover;
 		z-index: 3;
+	}
+
+#pagehome{
+	position: relative;
+	height:340px;
+	background: radial-gradient(48.65% 383.28% at 50.04% 50%, #233945 0%, #3F5864 100%);
+	padding:100px 0 100px 0;
+	text-align: center;
+}
+	#pagehome:after{
+		content:"";
+		position: absolute;
+		bottom:-7px;
+		left:0;
+		right:0;
+		height:70px;
+		background:image-url('bottomline3.png') no-repeat center;
+		background-size: 100% 100%;
+		z-index: 3;
+	}
+	#pagehome h1{
+		font-size: 36px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		text-align: center;
+		color:#fff;
+		font-weight: bold;
+	}
+
+			#pagehome .plus{
+			display: inline-block;
+			font-size: 24px;
+			line-height: 24px;
+			background: linear-gradient(253.58deg, #FFC000 1.55%, #FA820F 95.8%);
+			color:#fff;
+			padding:20px;
+			font-weight: bold;
+			margin:10px auto 10px;
+		}
+		#pagehome h1:after{
+		margin: auto;
+	}
+	.service.post{
+		padding:0px 0 100px 0;
 	}
 
 #home{
@@ -1756,6 +1805,10 @@ footer{
 		color:#fff;
 	}
 
+	#filters h2{
+		color:#fff;
+	}
+
 	.fields-box{
 		 height:50px; 
 	}
@@ -2326,17 +2379,25 @@ footer{
 		background-size: 45px 45px;
 		background-repeat: no-repeat;
 		padding:10px;
+
 	}
 
 	.buttonA.price{
 		background-image:image-url('lprice.svg');
+				background-position: left 20px center;
+		background-size: 45px 45px;
+		background-repeat: no-repeat;
 	}
 	.buttonA.calc{
 		background-image:image-url('calc.svg');
+				background-position: left 20px center;
+		background-size: 45px 45px;
+		background-repeat: no-repeat;
 	}
 	.buttonA.drive{
-		background-image:image-url('drive.svg');
-	}
+		background-image:image-url('drive.svg');		background-position: left 20px center;
+		background-size: 45px 45px;
+		background-repeat: no-repeat;	}
 
 	.on-down{
 	        margin: 0 0 10px 0;
@@ -3034,8 +3095,93 @@ footer{
 		    z-index: 0;
 		}
 
+.general-blocks{
+	display: flex;
+	max-width: 1200px;
+	width: 100%;
+	overflow: hidden;
+	margin: 0px auto 60px;
+	 justify-content:space-between;
+}
+	.gen-block{
+		width: 30%;
+		margin:0;
+		padding:40px 10px 40px 10px;
+		background: #fff;
+    	border: 1px solid #ddd;
+	}
+	.gen-block:hover{
+		background: #f1f1f1;
+    	border: 1px solid #ddd;
+	}
+
+	.gen-block .ico{
+		width:50px;
+		height: 50px;
+		margin: auto;
+		background-size: 95%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+		.gen-block .ico.general01{
+			background-image: image-url('general01.svg');
+		}
+
+		.gen-block .ico.general02{
+			background-image: image-url('general02.svg');
+		}
+
+		.gen-block .ico.general03{
+			background-image: image-url('general03.svg');
+		}
+
+	.gen-block .name{
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 28px;
+		text-align: center;
+		padding:20px 0 20px 0;
+	}
+
+	.gen-block .text{
+		font-size: 14px;
+		line-height: 20px;
+		text-align: center;
+		color: #5C5C5C;
+		padding:0px 0 30px 0;
+	}
+
+	.gen-block .buttonA{
+		margin: auto;
+		max-width: 190px;
+	}
 
 @media screen and (max-width: 800px) {
+
+	#pagehome h1{
+		font-size: 26px;
+		line-height: 30px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		text-align: center;
+		color:#fff;
+		font-weight: bold;
+	}
+s
+	.general-blocks{
+		display: block;
+		padding: 0 10px 10px 10px;
+	}
+
+	.gen-block{
+		width: 100%;
+		margin:0;
+		padding:40px 10px 40px 10px;
+		background: #fff;
+    	border: 1px solid #ddd;
+    	margin-bottom: 10px;
+	}
 
 	.tradein-filters{
 		width:100%;

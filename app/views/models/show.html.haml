@@ -1,9 +1,12 @@
+- @page_options = { :title => "Новая #{@model.product.title}", :description => @model.product.slave } if @model.product
+
 = render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: @model
 
 %section#cars.contentpage
   .contentpage_box
     .cars-box
       %h1 
+
         Модельный ряд ЛАДА
         = @model.model.upcase
       = render 'model', elements: @elements, has_complectation: true
