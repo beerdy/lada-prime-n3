@@ -1,3 +1,5 @@
+- @page_options = { :title => "Новая #{@modification.name} | Комплектации и цены на #{@modification.name}", :description => @model.product.slave } if @model.product
+
 = render 'modifications/head', modification: @modification
 
 = render 'filters/newcars', models: @models, model: @model, modification: @modification, filter: @modification
