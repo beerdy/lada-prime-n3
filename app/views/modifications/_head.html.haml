@@ -22,7 +22,7 @@
       .info-sale.posadka
         %span от
         = number_to_currency(modification.complectations_minimum_price, precision: 0, unit: "")
-        %span ₽
+        %i.fa.fa-rub{ :style => "font-size: 19pt;",  "aria-hidden" => "true" }
       %a.buttonA.popupOpen{:href => "#"} Получить предложение
       %a.buttonA.price.popupOpen{:href => "https://prime.lada.ru/ds/cars/#{modification.model.url}/#{modification.anchor_name}/print_prices.pdf", :target => "_blank"} Прайс-лист
       %a.buttonB.posadka{:href => "#"}
