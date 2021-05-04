@@ -93,13 +93,16 @@ class ParsersController < ApplicationController
 
         # Find modification
         modification = Modification.find_by( base_id: parser.id )
-        next unless
+        next unless modification
         
         parser.table.each do |item|
           # Find current eached complectation
           complectation = Complectation.find_by( complectation_id: item[:kompl_id] )
-          # Colors instock create or update
-          colors_modify( item[:color_codes], modification.id, complectation.id ) if complectation
+          if complectation
+            # Colors instock create or update
+            colors_modify( item[:color_codes], modification.id, complectation.id ) 
+            complectation.update( price_new: item[:price_new], price_old: item[:price_old])
+          end
         end
         # break
       end

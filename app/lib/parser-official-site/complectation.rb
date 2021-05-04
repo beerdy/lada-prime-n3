@@ -74,8 +74,8 @@ module ParserOfficialSite
           :kompl_id    => kompl_id.value,
           :kompl_name  => item.css('.kompl_name').text,
           :color_codes => get_color_codes( item.css('.has_dealer') ),
-          :price_new   => prices[0].text,
-          :price_old   => prices[1].try(:text),
+          :price_new   => price_new,
+          :price_old   => price_old,
           :property    => get_property( kompl_id )
         })
       end
