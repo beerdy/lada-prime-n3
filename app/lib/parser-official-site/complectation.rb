@@ -60,6 +60,16 @@ module ParserOfficialSite
         prices   = get_prices item
         kompl_id = item.attributes["id"]
         # pp item.attributes["id"]
+        price_new = 0
+        price_old = 0
+        begin
+          price_new = prices[0].text.scan(/\d+/).join('').to_i
+        rescue Exception => e
+        end
+        begin
+          price_old = prices[1].text.scan(/\d+/).join('').to_i
+        rescue Exception => e
+        end
         @table.push({
           :kompl_id    => kompl_id.value,
           :kompl_name  => item.css('.kompl_name').text,

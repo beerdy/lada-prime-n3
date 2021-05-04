@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-  resources :specials
-  resources :actions
-  get 'qwiz/index'
-  namespace :tradein do
-    resources :car_images
-  end
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
   
   root 'main#index'
   
-  get  'main/index'
-  get  'modification_images/show'
-  get  'maps', to: 'main#index'
+  get 'main/index'
+  get 'modification_images/show'
+  get 'maps', to: 'main#index'
+  get 'qwiz/index'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -21,6 +16,9 @@ Rails.application.routes.draw do
   resources :messages
   resources :pages, only: [:show]
   resources :complectations, only: [:show]
+  resources :specials
+  resources :actions
+
   resources :models do
     resources :modifications
   end
@@ -37,6 +35,10 @@ Rails.application.routes.draw do
       post :modification_image
       post :instock_price
     end
+  end
+
+  namespace :tradein do
+    resources :car_images
   end
 
   namespace :service do

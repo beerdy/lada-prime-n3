@@ -18,7 +18,6 @@ module ParserOfficialSite
             model = model.parent.attributes["href"].value
           rescue Exception => e
             # Временно описание модели отсутствует..
-            puts 'no exist'
             href_exist = false
           end
           href_exist ? Fiber.yield( model.text, model.parent.attributes["href"].value) : Fiber.yield( model.text, '#') 

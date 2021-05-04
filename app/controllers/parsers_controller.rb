@@ -87,6 +87,7 @@ class ParsersController < ApplicationController
         parser = ParserOfficialSite::Complectation.new
 
         sleep 1
+        # parser.load( 'https://prime.lada.ru/ds/cars/vesta/cross/prices.html' ) # "https://prime.lada.ru/#{params[:original]}"
         parser.load( @domain+link['price_url'] ) # "https://prime.lada.ru/#{params[:original]}"
         parser.parse
 
