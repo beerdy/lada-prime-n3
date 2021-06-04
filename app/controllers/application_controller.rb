@@ -22,10 +22,11 @@ class ApplicationController < ActionController::Base
       @map       = content.description if content.url == 'map'
       @footer    = content.description if content.url == 'footer'
     end
+    if @head
+      @keywords_and_other    = @head.slave 
+      @description_and_title = @head.description
+    end
     
-    @keywords_and_other    = @head.slave
-    @description_and_title = @head.description
-
     @sliders = sort_null(Slider.all).sort_by(&:sort)
   end
 
