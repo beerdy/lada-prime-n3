@@ -48,7 +48,7 @@
       <div class="contentpage_box">
           <h2>Контакты</h2>
           <div style="overflow:hidden;margin:0 0 20px 0;">
-            <div class="phone"><a href="tel:+7<%= @phone.html_safe %>"><%= @phone.html_safe if @phone%></a></div>
+            <div class="phone"><a href="tel:+7<%= @phone.html_safe if @phone %>"><%= @phone.html_safe if @phone %></a></div>
             <div class="mail"><%=  @email.html_safe if @email%></div>
             <div class="place"><%= @place.html_safe if @place%></div>
           </div>
