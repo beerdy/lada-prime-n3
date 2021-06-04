@@ -12,11 +12,11 @@
       <meta name="title" content="<%= @page_options[:title] %> | Официальный дилер ЛАДА в Липецке - ПРАЙМ. Покупка новых автомобилей ВАЗ, АвтоВАЗ, ЛАДА!">
       <meta name="description" content="<%= @page_options[:description] %> | Официальный дилер ЛАДА в Липецке - ПРАЙМ. Покупка новых автомобилей ВАЗ, АвтоВАЗ, ЛАДА! Новые машины ЛАДА в наличии. Весь модельный ряд ЛАДА в автосалоне ПРАЙМ город Липецк. Телефон: +7 (4742) 500-777">
     <%else%>
-      <%= @description_and_title.html_safe  %>
+      <%= @description_and_title.html_safe if @description_and_title. %>
     <%end%>
     
 
-    <%= @keywords_and_other.html_safe  %>
+    <%= @keywords_and_other.html_safe if @keywords_and_other %>
 
   </head>
   <body>
@@ -25,7 +25,7 @@
       <div class="contentpage_box">
         <a href="/" class="logoBlock"></a>
         <a href="tel:+7 <%= @phone.html_safe if @phone%>" class="phone">
-          <%= @phone.html_safe if @phone%>
+          <%= @phone.html_safe if @phone %>
           <span>горячая линия</span>
         </a>
         <div class="connect">
