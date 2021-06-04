@@ -43,7 +43,7 @@
 
     <%= yield %>
 
-    <%= @footer.html_safe if Rails.env.production?%>
+    <%= @footer.html_safe if @footer if Rails.env.production? %>
     <section id="contacts" class="contentpage">
       <div class="contentpage_box">
           <h2>Контакты</h2>
@@ -52,7 +52,7 @@
             <div class="mail"><%=  @email.html_safe if @email%></div>
             <div class="place"><%= @place.html_safe if @place%></div>
           </div>
-          <%= @map.html_safe if Rails.env.production? %>
+          <%= @map.html_safe if @map if Rails.env.production? %>
       </div>
     </section>
 
